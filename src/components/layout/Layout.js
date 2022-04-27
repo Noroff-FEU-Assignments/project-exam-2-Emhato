@@ -1,12 +1,31 @@
-import { BrowserRouter as Router, Route, NavLink, Routes } from "react-router-dom";
-import HomePage from "../home/HomePage";
-import AccommodationPage from "../accommodation/AccommodationPage";
-import ContactPage from "../contact/ContactPage";
-import LoginPage from "../login/LoginPage";
+// import { BrowserRouter as Router, Route, NavLink, Routes } from "react-router-dom";
+// New
+import { useContext } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import AuthContext from "../../context/AuthContext";
+// 
+// import HomePage from "../home/HomePage";
+// import AccommodationPage from "../accommodation/AccommodationPage";
+// import ContactPage from "../contact/ContactPage";
+// import LoginPage from "../login/LoginPage";
+// import AddPage from "../add/AddPage";
 
 export default function Layout() {
+
+    // New
+    const [auth, setAuth] = useContext(AuthContext);
+
+    const navigate = useNavigate();
+    // navigate("/");
+
+    function logout() {
+        setAuth(null);
+        navigate("/");
+    }
+    // 
+
   return (
-    <Router>
+    <>
         <header>
             <nav>
                 <ul>
@@ -24,15 +43,14 @@ export default function Layout() {
             </ul>
             <p>Admin</p>
             <NavLink to="/login">Login</NavLink>
+            {auth ? (
+                <>
+                    | <NavLink to="/add">Add accommodation</NavLink> | <button onClick={logout}>Log out</button>
+                </>
+            ) : (
+                <NavLink to="/login">Login</NavLink>
+            )}
         </footer>
-        <div>
-            <Routes>
-                <Route path="/" exact element={<HomePage />} />
-                <Route path="/accommodations" element={<AccommodationPage />} />
-                <Route path="/contact" element={<ContactPage />} />
-                <Route path="/login" element={<LoginPage />} />
-            </Routes>
-        </div>
-    </Router>
+    </>  
   )
 }
