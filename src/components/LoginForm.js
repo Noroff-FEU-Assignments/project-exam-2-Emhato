@@ -54,6 +54,7 @@ export default function LoginForm() {
 	}
 
 	return (
+        // Fjern <></>!!!?
 		<>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				{loginError && <FormError>{loginError}. Something went wrong. Please make sure you have the correct username and password.</FormError>}

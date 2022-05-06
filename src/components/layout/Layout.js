@@ -42,10 +42,13 @@ export default function Layout() {
                 <NavLink to="/contact">Contact</NavLink>
             </ul>
             <p>Admin</p>
-            <NavLink to="/login">Login</NavLink>
+            {/* <NavLink to="/login">Login</NavLink> */}
             {auth ? (
                 <>
-                    | <NavLink to="/add">Add accommodation</NavLink> | <button onClick={logout}>Log out</button>
+                    <NavLink to="/messages">Messages</NavLink>
+                    <NavLink to="/enquieries">Enquieries</NavLink>
+                    <NavLink to="/add">Add accommodation</NavLink>
+                    <button onClick={logout}>Log out</button>
                 </>
             ) : (
                 <NavLink to="/login">Login</NavLink>

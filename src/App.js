@@ -9,9 +9,14 @@ import AccommodationPage from "./components/accommodation/AccommodationPage";
 import ContactPage from "./components/contact/ContactPage";
 import LoginPage from "./components/login/LoginPage";
 import AddPage from "./components/add/AddPage";
+import MessagesPage from "./components/messages/MessagesPage";
+import EnquieriesPage from "./components/enquieries/EnquieriesPage";
+import SpesificPage from "./components/spesific/SpesificPage";
 import Layout from './components/layout/Layout';
 import { AuthProvider } from './context/AuthContext';
 import './App.css';
+// import Spesific from "./components/Spesific";
+// import SpesificPage from "./components/spesific/SpesificPage";
 
 
 function App() {
@@ -26,6 +31,9 @@ function App() {
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/add" element={<AddPage />} />
+              <Route path="/messages" element={<MessagesPage />} />
+              <Route path="/enquieries" element={<EnquieriesPage />} />
+              <Route path="/spesific/:id" element={<SpesificPage />} />
           </Routes>
         </div>
 
