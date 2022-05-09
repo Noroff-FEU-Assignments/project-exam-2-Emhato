@@ -11,6 +11,7 @@ export default function AllList() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    const [searchTerm, setSearchTerm] = useState('')
 
     const url = BASE_URL + "api/accommodations"
     // const http = UseAxios();
@@ -42,23 +43,32 @@ export default function AllList() {
 
     // console.log({items})
 
+    // Filter source: https://www.youtube.com/watch?v=mZvKPtH9Fzo
 
     return (
-        <ul className="card">
-            {items.map((media) => {
+        
+        <div className="container">
+            <input type="text" placeholder="Search..." onChange={event => {setSearchTerm(event.target.value)}} />
+            {items.filter((value) => {
+                if (searchTerm ==="") {
+                    return value
+                } else if (value.attributes.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+                    return value
+                }
+            }).map((media) => {
                 return (
-                    <li key={media.id}>
+                    <div key={media.id}>
                         <NavLink to={`/spesific/${media.id}`}>
                             <Heading size="3" title={media.attributes.name} />
                             <p>{media.attributes.short_description}</p>
                             <p>{media.attributes.price}</p>
                             {/* <p>{media.attributes.featured}</p> */}
                         </NavLink>
-                    </li>
+                    </div>
                 )
             })}
 
-        </ul>
+        </div>
     )
 
     // console.log(items)
@@ -73,3 +83,23 @@ export default function AllList() {
     //     </div>
     // )
 }
+
+
+// return (
+        
+//     <div className="card">
+//         {items.map((media) => {
+//             return (
+//                 <div key={media.id}>
+//                     <NavLink to={`/spesific/${media.id}`}>
+//                         <Heading size="3" title={media.attributes.name} />
+//                         <p>{media.attributes.short_description}</p>
+//                         <p>{media.attributes.price}</p>
+//                         {/* <p>{media.attributes.featured}</p> */}
+//                     </NavLink>
+//                 </div>
+//             )
+//         })}
+
+//     </div>
+// )

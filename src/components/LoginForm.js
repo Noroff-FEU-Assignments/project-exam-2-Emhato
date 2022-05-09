@@ -29,6 +29,7 @@ export default function LoginForm() {
 		resolver: yupResolver(schema),
 	});
 
+    // DO I NEED THIS?
     const [auth, setAuth] = useContext(AuthContext);
 
 	async function onSubmit(data) {

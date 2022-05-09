@@ -5,7 +5,7 @@ export default function AddPage() {
   return (
     <>
         <Heading title="Add accommodation" />
-        {/* <AddForm /> */}
+        <AddForm />
     </>
   )
 }

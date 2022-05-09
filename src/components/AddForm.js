@@ -39,7 +39,7 @@ export default function AddForm() {
         console.log(data);
 
         try {
-            const response = await http.post("api/accommodations", data);
+            const response = await http.post("api/accommodations/", data);
             console.log("response", response.data);
             navigate("/add");
         } catch (error) {
