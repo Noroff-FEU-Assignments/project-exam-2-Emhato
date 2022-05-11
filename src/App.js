@@ -1,3 +1,4 @@
+import "./components/sass/style.scss";
 import { BrowserRouter as Router, Route, NavLink, Routes } from "react-router-dom";
 // import HomePage from "../home/HomePage";
 // import AccommodationPage from "../accommodation/AccommodationPage";
@@ -14,7 +15,7 @@ import EnquieriesPage from "./components/enquieries/EnquieriesPage";
 import SpesificPage from "./components/spesific/SpesificPage";
 import Layout from './components/layout/Layout';
 import { AuthProvider } from './context/AuthContext';
-import './App.css';
+// import './App.css';
 // import Spesific from "./components/Spesific";
 // import SpesificPage from "./components/spesific/SpesificPage";
 

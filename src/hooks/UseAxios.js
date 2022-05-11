@@ -16,7 +16,9 @@ export default function UseAxios() {
 
     ApiClient.interceptors.request.use(function (config) {
         const token = auth.token;
+        console.log(token)
         config.headers.Authorization = token ? `Bearer ${token}` : "";
+        console.log(config)
         return config;
     });
 

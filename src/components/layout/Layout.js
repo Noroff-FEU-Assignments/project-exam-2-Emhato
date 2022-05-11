@@ -1,8 +1,14 @@
 // import { BrowserRouter as Router, Route, NavLink, Routes } from "react-router-dom";
 // New
+
+// use context and ustate, react on same line
 import { useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
+import React, { useState } from "react"
+// import hamburger from "./hamburger-img.png";
+
+
 // 
 // import HomePage from "../home/HomePage";
 // import AccommodationPage from "../accommodation/AccommodationPage";
@@ -22,16 +28,27 @@ export default function Layout() {
         setAuth(null);
         navigate("/");
     }
-    // 
+    // hamburger source: https://ibaslogic.com/how-to-add-hamburger-menu-in-react/
+
+    const [burgerOpen, setburgerOpen] = useState(false);
+
+    const handleToggle = () => {
+        setburgerOpen(prev => !prev)
+    }
+
+    const closeMenu = () => {
+        setburgerOpen(false)
+    }
 
   return (
     <>
         <header>
-            <nav>
-                <ul>
-                    <NavLink to="/">Home</NavLink>
-                    <NavLink to="/accommodations">Accommodations</NavLink>
-                    <NavLink to="/contact">Contact</NavLink>
+            <button onClick={handleToggle} className="hamburger"></button>
+            <nav className="nav">
+                <ul className={`nav__ul ${burgerOpen ? "nav__showMenu" : ""}`}>
+                    <NavLink onClick={() => closeMenu()} className="nav__link" to="/">Home</NavLink>
+                    <NavLink onClick={() => closeMenu()} className="nav__link" to="/accommodations">Accommodations</NavLink>
+                    <NavLink onClick={() => closeMenu()} className="nav__link" to="/contact">Contact</NavLink>
                 </ul>
             </nav>
         </header>

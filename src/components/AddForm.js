@@ -5,6 +5,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import FormError from "./FormError";
 import UseAxios from "../hooks/UseAxios";
+import AuthContext from "../context/AuthContext";
 
 const schema = yup.object().shape({
     name: yup.string().required("Please add the name of accommodation"),
@@ -19,6 +20,7 @@ const schema = yup.object().shape({
     description: yup.string().min(100).max(300).required("Please add a short description of the accommodation(50-100 characthers"),
 });
 
+
 export default function AddForm() {
     const [submitting, setSubmitting] = useState(false);
     const [serverError, setServerError] = useState(null);
@@ -30,16 +32,20 @@ export default function AddForm() {
         resolver: yupResolver(schema),
     });
 
+    console.log(AuthContext)
+
     async function onSubmit(data) {
         setSubmitting(true);
         setServerError(null);
 
         // data.status = "publish";
 
-        console.log(data);
+        const postData = { data: data }
+
+        // console.log(data);
 
         try {
-            const response = await http.post("api/accommodations/", data);
+            const response = await http.post("api/accommodations/", postData);
             console.log("response", response.data);
             navigate("/add");
         } catch (error) {
@@ -53,24 +59,18 @@ export default function AddForm() {
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             {serverError && <FormError>{serverError}</FormError>}
-            <fieldset disabled={submitting}>
-                <div>
-                    <label htmlFor="name">Name of accommodation</label>
-                    <input name="name" id="name" {...register('name')} />
-                    {errors.name && <FormError>{errors.name.message}</FormError>}
-                </div>
+            <fieldset className="form" disabled={submitting}>
+                <label className="form__label" htmlFor="name">Name of accommodation</label>
+                <input className="form__input" name="name" id="name" {...register('name')} />
+                {errors.name && <FormError>{errors.name.message}</FormError>}
 
-                <div>
-                    <label htmlFor="price">Price per night</label>
-                    <input name="price" id="price" {...register('price')} />
-                    {errors.price && <FormError>{errors.price.message}</FormError>}
-                </div>
+                <label className="form__label" htmlFor="price">Price per night</label>
+                <input className="form__input" name="price" id="price" {...register('price')} />
+                {errors.price && <FormError>{errors.price.message}</FormError>}
 
-                <div>
-                    <label htmlFor="max_number_of_guests">Maximum number of guests</label>
-                    <input name="max_number_of_guests" id="max_number_of_guests" {...register('max_number_of_guests')} />
-                    {errors.max_number_of_guests && <FormError>{errors.max_number_of_guests.message}</FormError>}
-                </div>
+                <label className="form__label" htmlFor="max_number_of_guests">Maximum number of guests</label>
+                <input className="form__input" name="max_number_of_guests" id="max_number_of_guests" {...register('max_number_of_guests')} />
+                {errors.max_number_of_guests && <FormError>{errors.max_number_of_guests.message}</FormError>}
 
                 {/* <div>
                     <label htmlFor="accommodation_type">Accommodation type</label>
@@ -82,48 +82,34 @@ export default function AddForm() {
                     </select>
                 </div> */}
 
-                <div>
-                    <label htmlFor="main_img">Main image (url)</label>
-                    <input name="main_img" id="main_img" {...register('main_img')} />
-                    {errors.main_img && <FormError>{errors.main_img.message}</FormError>}
-                </div>
+                <label className="form__label" htmlFor="main_img">Main image (url)</label>
+                <input className="form__input" name="main_img" id="main_img" {...register('main_img')} />
+                {errors.main_img && <FormError>{errors.main_img.message}</FormError>}
 
-                <div>
-                    <label htmlFor="img_2">Image 2</label>
-                    <input name="img_2" id="img_2" {...register('img_2')} />
-                    {errors.img_2 && <FormError>{errors.img_2.message}</FormError>}
-                </div>
+                <label className="form__label" htmlFor="img_2">Image 2</label>
+                <input className="form__input" name="img_2" id="img_2" {...register('img_2')} />
+                {errors.img_2 && <FormError>{errors.img_2.message}</FormError>}
 
-                <div>
-                    <label htmlFor="img_3">Image 3</label>
-                    <input name="img_3" id="img_3" {...register('img_3')} />
-                    {errors.img_3 && <FormError>{errors.img_3.message}</FormError>}
-                </div>
+                <label className="form__label" htmlFor="img_3">Image 3</label>
+                <input className="form__input" name="img_3" id="img_3" {...register('img_3')} />
+                {errors.img_3 && <FormError>{errors.img_3.message}</FormError>}
 
-                <div>
-                    <label htmlFor="img_4">Image 4</label>
-                    <input name="img_4" id="img_4" {...register('img_4')} />
-                    {errors.img_4 && <FormError>{errors.img_4.message}</FormError>}
-                </div>
+                <label className="form__label" htmlFor="img_4">Image 4</label>
+                <input className="form__input" name="img_4" id="img_4" {...register('img_4')} />
+                {errors.img_4 && <FormError>{errors.img_4.message}</FormError>}
 
-                <div>
-                    <label htmlFor="short_description">Short description (50-100 characthers)</label>
-                    <textarea name="short_description" {...register('short_description')}></textarea>
-                    {errors.short_description && <FormError>{errors.short_description}</FormError>}
-                </div>
+                <label className="form__label" htmlFor="short_description">Short description (50-100 characthers)</label>
+                <textarea className="form__input form__message" name="short_description" {...register('short_description')}></textarea>
+                {errors.short_description && <FormError>{errors.short_description}</FormError>}
 
-                <div>
-                    <label htmlFor="description">Description (100-300 characthers)</label>
-                    <textarea name="description" {...register('description')}></textarea>
-                    {errors.description && <FormError>{errors.description}</FormError>}
-                </div>
+                <label className="form__label" htmlFor="description">Description (100-300 characthers)</label>
+                <textarea className="form__input form__message" name="description" {...register('description')}></textarea>
+                {errors.description && <FormError>{errors.description}</FormError>}
 
-                <div>
-                    <label htmlFor="featured">Add to featured list</label>
-                    <input type="checkbox" id="featured" />
-                </div>
+                <label className="form__label" htmlFor="featured">Add to featured list</label>
+                <input className="form__checkbox" type="checkbox" id="featured" />
 
-                <button>{submitting ? "Submitting..." : "Submit"}</button>
+                <button className="form__btn">{submitting ? "Submitting..." : "Submit"}</button>
             </fieldset>
         </form>
     )

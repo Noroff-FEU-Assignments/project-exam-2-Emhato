@@ -4,7 +4,7 @@ import axios from "axios";
 // import UseAxios from "../hooks/UseAxios";
 import { BASE_URL } from "../constants/Api";
 import Heading from "./Heading";
-import AccommodationItem from "./AccommodationItem";
+// import AccommodationItem from "./AccommodationItem";
 
 export default function AllList() {
     const [items, setItems] = useState([]);

@@ -36,7 +36,7 @@ export default function LoginForm() {
 		setSubmitting(true);
 		setLoginError(null);
 
-		console.log(data);
+		// console.log(data);
 
 		try {
 			const response = await axios.post(url, data);
@@ -59,17 +59,13 @@ export default function LoginForm() {
 		<>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				{loginError && <FormError>{loginError}. Something went wrong. Please make sure you have the correct username and password.</FormError>}
-				<fieldset disabled={submitting}>
-					<div>
-						<input name="identifier" placeholder="Username" {...register('identifier')} />
-						{errors.identifier && <FormError>{errors.identifier.message}</FormError>}
-					</div>
+				<fieldset className="form" disabled={submitting}>
+					<input className="form__input" name="identifier" placeholder="Username" {...register('identifier')} />
+					{errors.identifier && <FormError>{errors.identifier.message}</FormError>}
 
-					<div>
-						<input name="password" placeholder="Password" {...register('password')} type="password" />
-						{errors.password && <FormError>{errors.password.message}</FormError>}
-					</div>
-					<button>{submitting ? "Loggin in..." : "Login"}</button>
+					<input className="form__input" name="password" placeholder="Password" {...register('password')} type="password" />
+					{errors.password && <FormError>{errors.password.message}</FormError>}
+					<button className="form__btn">{submitting ? "Loggin in..." : "Login"}</button>
 				</fieldset>
 			</form>
 		</>

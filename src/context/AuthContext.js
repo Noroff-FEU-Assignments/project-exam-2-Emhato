@@ -1,5 +1,6 @@
-// Probably don't need to import React...Try remove
-import React, { useState } from "react";
+// Need react because of "react.createContext"
+// import React, { useState } from "react";
+import React from "react";
 import useLocalStorage from "../hooks/UseLocalStorage";
 
 const AuthContext = React.createContext([null, () => {}]);
