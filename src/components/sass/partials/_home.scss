@@ -1,0 +1,62 @@
+// body {
+//     background-image: url(../../../images/bergen-docs.JPG);
+//     background-position: center;
+//     background-size: cover;
+//     background-repeat: no-repeat;
+// }
+
+.card-container {
+    margin-left: -40px;
+    margin-top: 650px;
+}
+
+li {
+    list-style: none;
+    background-color: $secondary-color;
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    box-shadow:  3px 6px 9px rgba(0, 0, 0, 0.6);
+}
+
+.content-container {
+    max-width: 85%;
+    margin: auto;
+}
+
+.card {
+    text-decoration: none;
+    color: #fff;
+    font-size: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__img {
+        height: 135px;
+        width: 275px;
+        background-position: center;
+        background-size: cover;
+    }
+}
+
+@media only screen and (min-width: $desktop-width) {
+    .content-container {
+        max-width: fit-content;
+    }
+
+    .card-container {
+        margin-top: 200px;
+        display: flex;
+        justify-content: space-around;
+    }
+    
+    .card {
+        font-size: 0.5rem;
+
+        &__img {
+            height: 100px;
+            width: 200px;
+        }
+    }
+}

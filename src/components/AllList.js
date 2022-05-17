@@ -59,6 +59,7 @@ export default function AllList() {
                 return (
                     <div key={media.id}>
                         <NavLink to={`/spesific/${media.id}`}>
+                            <img src={media.attributes.main_img} alt={media.attributes.name}></img>
                             <Heading size="3" title={media.attributes.name} />
                             <p>{media.attributes.short_description}</p>
                             <p>{media.attributes.price}</p>

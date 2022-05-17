@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import FormError from "./FormError";
-import UseAxios from "../hooks/UseAxios";
+import useAxios from "../hooks/useAxios";
 import AuthContext from "../context/AuthContext";
 
 const schema = yup.object().shape({
@@ -26,7 +26,7 @@ export default function AddForm() {
     const [serverError, setServerError] = useState(null);
 
     const navigate = useNavigate();
-    const http = UseAxios();
+    const http = useAxios();
 
     const { register, handleSubmit, formState:{errors}, } = useForm({
         resolver: yupResolver(schema),

@@ -1,0 +1,17 @@
+// .search__input {
+//     background-color: black;
+// }
+
+.search {
+    &__result {
+        height: 200px;
+        width: 300px;
+        background-color: blanchedalmond;
+        overflow: hidden;
+        overflow-y: auto;
+    }
+
+    &__item {
+        color: orchid;
+    }
+}

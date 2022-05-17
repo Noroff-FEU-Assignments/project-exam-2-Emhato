@@ -7,6 +7,7 @@ import axios from "axios";
 import FormError from "./FormError";
 import { BASE_URL } from "../constants/Api";
 
+
 const schema = yup.object().shape({
     accommodation_name: yup.string().required(),
     first_name: yup.string().required("Please enter your first name").min(3, "Must be at least 3 characters"),
@@ -84,39 +85,45 @@ export default function EnquieriesForm() {
     console.log(errors);
 
     return (
+        <>
+        {/* <button className="form__btn">Make enquiery</button> */}
         <form onSubmit={handleSubmit(onSubmit)} className="container">
             {serverError && <FormError>{serverError}</FormError>}
-            <fieldset disabled={submitting}>
+            <fieldset className="form" disabled={submitting}>
                 {errors.first_name && <span className="form-error">{errors.first_name.message}</span>}
 
                 {/* How to fix this? */}
-                <input {...register("accommodation_name")} id="accommodation_name" value={items.attributes.name}/>
+                {/* <input {...register("accommodation_name")} id="accommodation_name" value={items.attributes.name}/> */}
 
-                <label htmlFor="first_name">First name</label>
-                <input {...register("first_name")} id="first_name" />
+                {errors.last_name && <span className="form__error">{errors.last_name.message}</span>}
+                <label className="form__label" htmlFor="first_name">First name</label>
+                <input className="form__input" {...register("first_name")} id="first_name" />
                 
-                {errors.last_name && <span className="form-error">{errors.last_name.message}</span>}
-                <label htmlFor="last_name">Last name</label>
-                <input {...register("last_name")} id="last_name" />
+                {errors.last_name && <span className="form__error">{errors.last_name.message}</span>}
+                <label className="form__label" htmlFor="last_name">Last name</label>
+                <input className="form__input" {...register("last_name")} id="last_name" />
                 
-                {errors.email && <span className="form-error">{errors.email.message}</span>}
-                <label htmlFor="email">E-mail</label>
-                <input {...register("email")} id="email" />
+                {errors.email && <span className="form__error">{errors.email.message}</span>}
+                <label className="form__label" htmlFor="email">E-mail</label>
+                <input className="form__input" {...register("email")} id="email" />
                 
-                <label htmlFor="start_date">Start date</label>
-                <input type="date" {...register("start_date")} id="start_date" />
+                {errors.start_date && <span className="form__error">{errors.start_date.message}</span>}
+                <label className="form__label" htmlFor="start_date">Start date</label>
+                <input className="form__input" type="date" {...register("start_date")} id="start_date" />
 
-                <label htmlFor="end_date">End date</label>
-                <input type="date" {...register("end_date")} id="end_date" />
+                {errors.end_date && <span className="form__error">{errors.end_date.message}</span>}
+                <label className="form__label" htmlFor="end_date">End date</label>
+                <input className="form__input" type="date" {...register("end_date")} id="end_date" />
 
-                {errors.message && <span className="form-error">{errors.message.message}</span>}
-                <label htmlFor="message">Message</label>
-                <textarea {...register("message")} id="message" />
+                {errors.message && <span className="form__error">{errors.message.message}</span>}
+                <label className="form__label" htmlFor="message">Message</label>
+                <textarea className="form__input form__message" {...register("message")} id="message" />
                 
 
-                <button>{submitting ? "Sending..." : "Send"}</button>
+                <button className="form__btn">{submitting ? "Sending..." : "Make enquiery"}</button>
 
             </fieldset>
         </form>
+        </>
     )
 }

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 // import UseAxios from "../hooks/UseAxios";
 import { BASE_URL } from "../constants/Api";
@@ -19,7 +20,7 @@ export default function Featured() {
         async function getData() {
             try {
                 const response = await axios.get(url);
-                // console.log(response.data.data[0]);
+                // console.log(response.data.data);
                 setItems(response.data.data);
             } catch(error) {
                 console.log(error);
@@ -42,20 +43,21 @@ export default function Featured() {
 
     // console.log({items})
 
+    // console.log(items.attributes.main_img)
 
     return (
-        <ul className="card">
+        <ul className="card-container">
             {items.map((media) => {
                 if(media.attributes.featured === true) {
                     return (
-                        <li key={media.id}>
-                            <NavLink to={`/spesific/${media.id}`}>
-                                <Heading size="3" title={media.attributes.name} />
-                                <p>{media.attributes.short_description}</p>
-                                <p>{media.attributes.price}</p>
-                                {/* <p>{media.attributes.featured}</p> */}
-                            </NavLink>
-                        </li>
+                        <div className="content-container" key={media.id}>
+                            <li>
+                                <Link className="card" to={`/spesific/${media.id}`}>
+                                    <div className="card__img" style={{backgroundImage: `url(${media.attributes.main_img})`}}></div>
+                                    <Heading className="card__name" size="2" title={media.attributes.name} />
+                                </Link>
+                            </li>
+                        </div>
                     )
                 }
             })}

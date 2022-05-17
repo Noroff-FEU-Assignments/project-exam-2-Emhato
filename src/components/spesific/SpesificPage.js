@@ -1,13 +1,15 @@
-import Heading from "../Heading";
+// import Heading from "../Heading";
 import Spesific from "../Spesific";
-import EnquieriesForm from "../EnquieriesForm";
+import Footer from "../Footer";
+// import EnquieriesForm from "../EnquieriesForm";
 
 export default function SpesificPage() {
   return (
     <>
-        <Heading title="Spesific" />
+        {/* <Heading title="Spesific" /> */}
         <Spesific />
-        <EnquieriesForm />
+        <Footer />
+        {/* <EnquieriesForm /> */}
     </>
   )
 }

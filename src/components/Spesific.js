@@ -5,6 +5,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Heading from "./Heading";
 import { BASE_URL } from "../constants/Api";
+import EnquieriesForm from "./EnquieriesForm";
 
 
 export default function Spesific() {
@@ -45,12 +46,31 @@ export default function Spesific() {
     if(error) return <div>An error occured: {error}</div>
 
 
-
     return (
         <>
             {/* <title>{items.attributes.name}</title> */}
+            <div className="carousel">
+                                <div className="carousel__element">
+                                    <img src={items.attributes.main_img} alt={items.attributes.name}></img>
+                                </div>
+                                <div className="carousel__element">
+                                    <img src={items.attributes.img_2} alt={items.attributes.name}></img>
+                                </div>
+                                <div className="carousel__element">
+                                    <img src={items.attributes.img_3} alt={items.attributes.name}></img>
+                                </div>
+                                <div className="carousel__element">
+                                <img src={items.attributes.img_4} alt={items.attributes.name}></img>
+                                </div>
+                            </div>
             <Heading size="1" title={items.attributes.name} />
-            <p>{items.attributes.description}</p>
+            <p className="description">{items.attributes.description}</p>
+            <Heading size="2" title="Make an enquiery" />
+            {/* <button className="form__btn">Make enquiery</button> */}
+            <EnquieriesForm />
         </>
     );
 }
+
+
+

@@ -1,0 +1,30 @@
+// Source: https://www.youtube.com/watch?v=lvKK2fs6h4I
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 100vw;
+    margin-block: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $secondary-color;
+    // background: #8b8b8b;
+    border-radius: 100vw;
+}
+
+body::-webkit-scrollbar-thumb {
+    // background: $secondary-color;
+    background: #8b8b8b;
+}
+
+@supports (scrollbar-color: grey yellow) {
+    * {
+        scrollbar-color: #8b8b8b #f2f2f2;
+        scrollbar-width: thin;
+    }
+    
+}
