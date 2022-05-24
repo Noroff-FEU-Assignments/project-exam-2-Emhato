@@ -3,7 +3,7 @@ import AllList from "../AllList";
 import Footer from "../Footer";
 import SearchBar from "../SearchBar";
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL } from "../../constants/Api";
 

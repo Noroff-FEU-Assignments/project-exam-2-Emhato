@@ -1,5 +1,15 @@
 // Source for the nav: https://www.youtube.com/watch?v=HbBMp6yUXO0&list=PL4-IK0AVhVjPxtv9SVKQZm_huHpDEgLz0&index=9
 
+.logo {
+    height: 40px;
+    margin: 10px 0 0 10px;
+    border-radius: 15px;
+}
+
+.logo-big {
+    display: none;
+}
+
 .hamburger {
     display: none;
 }
@@ -59,6 +69,16 @@
 }
 
 @media only screen and (min-width: $desktop-width) {
+
+    .logo {
+        display: none;
+    }
+
+    .logo-big {
+        display: block;
+        margin-top: -75px;
+        margin-left: 20px;
+    }
 
     .nav {
         &__ul {

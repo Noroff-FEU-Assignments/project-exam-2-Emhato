@@ -1,62 +1,42 @@
-// body {
+// .body {
 //     background-image: url(../../../images/bergen-docs.JPG);
 //     background-position: center;
-//     background-size: cover;
+//     background-size: contain;
 //     background-repeat: no-repeat;
 // }
 
-.card-container {
-    margin-left: -40px;
-    margin-top: 650px;
+.home-h1 {
+    animation: ease-in fadeIn 4s;
+    // margin-top: -190px;
+    // padding: 200px;
+    // width: 100%;
+    margin-top: -70px;
+    padding: 200px 20px 200px 20px;
+    background-image: url(../../../images/bergen-docs.JPG);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
-li {
-    list-style: none;
-    background-color: $secondary-color;
-    padding: 20px;
-    border-radius: 20px;
-    margin-bottom: 30px;
-    box-shadow:  3px 6px 9px rgba(0, 0, 0, 0.6);
-}
-
-.content-container {
-    max-width: 85%;
-    margin: auto;
-}
-
-.card {
-    text-decoration: none;
-    color: #fff;
-    font-size: 0.8rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    &__img {
-        height: 135px;
-        width: 275px;
-        background-position: center;
-        background-size: cover;
-    }
+.featured-container {
+    margin-top: 100px;
 }
 
 @media only screen and (min-width: $desktop-width) {
-    .content-container {
-        max-width: fit-content;
-    }
-
-    .card-container {
-        margin-top: 200px;
+    .featured-container {
+        margin: auto;
         display: flex;
-        justify-content: space-around;
+        flex-wrap: wrap;
+        max-width: 90%;
+        justify-content: space-between;
+        margin-bottom: 100px;
     }
-    
-    .card {
-        font-size: 0.5rem;
 
-        &__img {
-            height: 100px;
-            width: 200px;
+    .featured-list {
+
+        &__card {
+            max-width: 200px;
+            height: 200px;
         }
     }
 }

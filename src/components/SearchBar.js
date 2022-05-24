@@ -23,7 +23,6 @@ export default function SearchBar({placeholder, data}) {
         <div className="search">
             <div className="search__inputs">
                 <input className="search__input" type="text" placeholder={placeholder} onChange={handleSearch}></input>
-                <div className="search__icon"></div>
             </div>
             { searchTerm.length !== 0 && (
                 <div className="search__result">

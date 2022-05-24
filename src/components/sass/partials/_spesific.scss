@@ -6,3 +6,83 @@
 .make-enquiery {
     border-top: solid;
 }
+
+// CTA
+
+.cta-container {
+    display: flex;
+    justify-content: center;
+    margin: 60px 0;
+}
+
+.enquiery-cta {
+    // margin-top: 10px;
+    // margin-bottom: 60px;
+    // margin: 60px auto;
+    // text-align: center;
+    border: none;
+    color: #fff;
+    background: rgb(242,135,41);
+    background: linear-gradient(0deg, rgba(242,135,41,1) 0%, rgba(191,69,42,1) 100%);
+    padding: 10px;
+    font-size: 1.5rem;
+    box-shadow: 3px 6px 9px rgba(0, 0, 0, 0.3);
+    font-weight: 700;
+    transition: 0.5s;
+    border-radius: 0 15px;
+}
+
+
+// Form
+// Source: https://www.youtube.com/watch?v=3CAbXhbb2W8
+
+.hide-name {
+    display: none;
+}
+
+.modal-hide {
+    display: none;
+}
+
+.form-modal-container {
+    display: block;
+    margin-bottom: unset;
+    position: fixed;
+    z-index: 10;
+    top: 2.5em;
+    bottom: 2em;
+    left: 2em;
+    right: 2em;
+    background-color: $secondary-color;
+    background: rgb(242,242,242);
+    box-shadow: 0 0 0 4em rgba(black, 0.6);
+    overflow-y: scroll;
+}
+
+.close-hide {
+    display: none;
+}
+
+.close-modal {
+    display: block;
+    background-color: #fff;
+    border: solid 2px $primary-color;
+    border-radius: 50%;
+    padding: 12px 7px 7px 7px;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    position: fixed;
+    top: 1.5em;
+    left: 1em;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+@media only screen and (min-width: $mini-width) {
+    .form-modal {
+        top: 3em;
+        bottom: 3em;
+        left: 3em;
+        right: 3em;
+    }
+}

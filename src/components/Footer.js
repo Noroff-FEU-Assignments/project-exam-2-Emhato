@@ -13,23 +13,25 @@ export default function Footer() {
     }
 
     return (
-        <footer>
-            <ul>
+        <footer className="footer">
+            <ul className="footer__ul">
                 <NavLink to="/">Home</NavLink>
                 <NavLink to="/accommodations">Accommodations</NavLink>
                 <NavLink to="/contact">Contact</NavLink>
             </ul>
-            <p>Admin</p>
-            {auth ? (
-                <>
-                    <NavLink to="/messages">Messages</NavLink>
-                    <NavLink to="/enquieries">Enquieries</NavLink>
-                    <NavLink to="/add">Add accommodation</NavLink>
-                    <button onClick={logout}>Log out</button>
-                </>
-            ) : (
-                <NavLink to="/login">Login</NavLink>
-            )}
+            <div className="footer__admin-container">
+                <p>Admin</p>
+                {auth ? (
+                    <>
+                        <NavLink to="/messages">Messages</NavLink>
+                        <NavLink to="/enquieries">Enquieries</NavLink>
+                        <NavLink to="/add">Add accommodation</NavLink>
+                        <button onClick={logout}>Log out</button>
+                    </>
+                ) : (
+                    <NavLink to="/login">Login</NavLink>
+                )}
+            </div>
         </footer>
     )
 }

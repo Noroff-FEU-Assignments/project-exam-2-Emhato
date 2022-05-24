@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import useAxios from "../hooks/useAxios";
 import AuthContext from "../context/AuthContext";
 
-export default function ContactMessages() {
+export default function EnquieryMessages() {
     // const [submitting, setSubmitting] = useState(false);
     // const [serverError, setServerError] = useState(null);
     const [items, setItems] = useState([]);
@@ -15,7 +15,7 @@ export default function ContactMessages() {
     useEffect(function() {
         async function getData() {
             try {
-                const response = await http.get("api/contacts/");
+                const response = await http.get("api/enquiries");
                 console.log("response", response.data.data);
                 // console.log(response.data.data[0]);
                 setItems(response.data.data);
@@ -35,20 +35,23 @@ export default function ContactMessages() {
             {items.map((media) => {
                 return (
                     <div key={media.id}>
-                        {/* <label className="handle-lable" htmlFor="not-handled">Not handled</label>
-                        <input id="not-handled" className="radio-red" type="radio" name="handeling" value="not handled"></input>
+                        {/* <label htmlFor="not-handled">Not handled</label>
+                        <input id="not-handled" className="radio-red" type="radio" name="handling" value="not handled"></input>
 
-                        <label className="handle-lable" htmlFor="processing">Processing</label>
-                        <input id="processing" className="radio-yellow" type="radio" name="handeling" value="Processing"></input>
+                        <label htmlFor="processing">Processing</label>
+                        <input id="processing" className="radio-yellow" type="radio" name="handling" value="Processing"></input>
 
-                        <label className="handle-lable" htmlFor="handled">Handled</label>
-                        <input id="handled" className="radio-green" type="radio" name="handeling" value="handled"></input>     */}
+                        <label htmlFor="handled">Handled</label>
+                        <input id="handled" className="radio-green" type="radio" name="handling" value="handled"></input>     */}
                         <div className="messages" key={media.id}>
                             {/* <label htmlFor="not-handled">Not handled</label>
                             <input id="not-handled" className="radio-red" type="radio" name="handling" value="not handled"></input> */}
+                            <p>Accommodation name: {media.attributes.accommodation_name}</p>
                             <p>First name: {media.attributes.first_name}</p>
                             <p>Last name: {media.attributes.last_name}</p>
                             <p>Email: {media.attributes.email}</p>
+                            <p>Checkin: {media.attributes.start_date}</p>
+                            <p>Checkout: {media.attributes.end_date}</p>
                             <p>Message: {media.attributes.message}</p>
                             {/* <p>Date: {media.attributes.publishedAt}</p> */}
                         </div>

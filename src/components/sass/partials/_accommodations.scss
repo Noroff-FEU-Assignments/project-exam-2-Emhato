@@ -1,0 +1,22 @@
+@media only screen and (min-width: $mini-width) {
+    .accommodation-list {
+
+        &__description {
+            display: block;
+            font-weight: 400;
+        }
+
+
+        &__card > img {
+            aspect-ratio: 3 / 1;
+        }
+    }
+}
+
+@media only screen and (min-width: $desktop-width) {
+    .accommodation-list {
+        &__card {
+            max-width: 60%;
+        }
+    }
+}

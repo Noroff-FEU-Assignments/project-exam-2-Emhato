@@ -6,12 +6,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 import FormError from "./FormError";
 import { BASE_URL } from "../constants/Api";
+// import Spesific from "./Spesific";
+import Heading from "./Heading";
 
 
 const schema = yup.object().shape({
     accommodation_name: yup.string().required(),
     first_name: yup.string().required("Please enter your first name").min(3, "Must be at least 3 characters"),
-    last_name: yup.string().required("Please enter your last name").min(4, "Must be at least 4 characters"),
+    last_name: yup.string().required("Please enter your last name").min(2, "Must be at least 4 characters"),
     email: yup.string().required("Please enter your e-mail").email("Please enter a valid e-mail address"),
     start_date: yup.date().required("Please select a start date"),
     end_date: yup.date().required("Please select a end date"),
@@ -19,6 +21,7 @@ const schema = yup.object().shape({
 });
 
 export default function EnquieriesForm() {
+    const [formOpen, setFormOpen] = useState(false);
     const [submitting, setSubmitting] = useState(false);
     const [serverError, setServerError] = useState(null);
 
@@ -27,7 +30,7 @@ export default function EnquieriesForm() {
     });
 
     // Getting the name of the accommodation
-    const [items, setItems] = useState(null);
+    const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -51,11 +54,10 @@ export default function EnquieriesForm() {
         getData();
 
     }, []);
-    // 
 
-    // function onSubmit(data) {
-    //     console.log(data);
-    // }
+    if(loading) return <div>Loading accommodation...</div>
+
+    if(error) return <div>An error occured: {error}</div>
 
     async function onSubmit(data) {
         setSubmitting(true);
@@ -63,15 +65,11 @@ export default function EnquieriesForm() {
 
         const url = BASE_URL + "api/enquiries"
 
-        // data.status = "publish";
-
         const postData = { data: data }
-
-        // console.log(data);
 
         try {
             const response = await axios.post(url, postData);
-            console.log("response", response.data);
+            // console.log("response", response.data);
             // navigate("/add");
         } catch (error) {
             console.log("error", error);
@@ -81,19 +79,43 @@ export default function EnquieriesForm() {
         }
     }
 
+    // console.log(errors);
 
-    console.log(errors);
+    // Modal display/ display none
+
+    // const [formOpen, setFormOpen] = useState(false);
+
+    const handleToggle = () => {
+        setFormOpen(prev => !prev)
+    }
+
+    const closeModal = () => {
+        setFormOpen(false)
+    }
 
     return (
         <>
+        {/* <Spesific /> */}
         {/* <button className="form__btn">Make enquiery</button> */}
-        <form onSubmit={handleSubmit(onSubmit)} className="container">
+        <div className="cta-container">
+            <button className="enquiery-cta" onClick={handleToggle}>Make an enquiery</button>
+        </div>
+        <form onSubmit={handleSubmit(onSubmit)} className={`container modal-hide ${formOpen ? "form-modal-container" : ""}`}>
+            <button onClick={() => closeModal()} className={`close-hide ${formOpen ? "close-modal" : ""}`}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="23.335" height="23.335" viewBox="0 0 23.335 23.335">
+                    <g id="close" transform="translate(1.061 1.061)">
+                        <line id="Line_20" data-name="Line 20" x2="30" transform="rotate(45)" fill="none" stroke="#bf452a" strokeWidth="3"/>
+                        <line id="Line_21" data-name="Line 21" x2="30" transform="translate(21.213) rotate(135)" fill="none" stroke="#bf452a" strokeWidth="3"/>
+                    </g>
+                </svg>
+            </button>
             {serverError && <FormError>{serverError}</FormError>}
-            <fieldset className="form" disabled={submitting}>
+            <fieldset className="form form-modal" disabled={submitting}>
+                <Heading size="2" title="Make an enqiery"/>
                 {errors.first_name && <span className="form-error">{errors.first_name.message}</span>}
 
                 {/* How to fix this? */}
-                {/* <input {...register("accommodation_name")} id="accommodation_name" value={items.attributes.name}/> */}
+                <input className="hide-name" {...register("accommodation_name")} id="accommodation_name" value={items.attributes.name}/>
 
                 {errors.last_name && <span className="form__error">{errors.last_name.message}</span>}
                 <label className="form__label" htmlFor="first_name">First name</label>
@@ -127,3 +149,42 @@ export default function EnquieriesForm() {
         </>
     )
 }
+
+{/* <form onSubmit={handleSubmit(onSubmit)}  className="container form-modal-container"> */}
+
+
+
+
+
+// import { NavLink } from "react-router-dom";
+// import React, { useState } from "react"
+
+// export default function Layout() {
+
+//     // hamburger source: https://ibaslogic.com/how-to-add-hamburger-menu-in-react/
+
+//     const [burgerOpen, setburgerOpen] = useState(false);
+
+//     const handleToggle = () => {
+//         setburgerOpen(prev => !prev)
+//     }
+
+//     const closeMenu = () => {
+//         setburgerOpen(false)
+//     }
+
+//   return (
+//     <>
+//         <header>
+//             <button onClick={handleToggle} className="hamburger"></button>
+//             <nav className="nav">
+//                 <ul className={`nav__ul ${burgerOpen ? "nav__showMenu" : ""}`}>
+//                     <NavLink onClick={() => closeMenu()} className="nav__link" to="/">Home</NavLink>
+//                     <NavLink onClick={() => closeMenu()} className="nav__link" to="/accommodations">Accommodations</NavLink>
+//                     <NavLink onClick={() => closeMenu()} className="nav__link" to="/contact">Contact</NavLink>
+//                 </ul>
+//             </nav>
+//         </header>
+//     </>  
+//   )
+// }

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 // import UseAxios from "../hooks/UseAxios";
 import { BASE_URL } from "../constants/Api";
@@ -57,50 +57,20 @@ export default function AllList() {
                 }
             }).map((media) => {
                 return (
-                    <div key={media.id}>
-                        <NavLink to={`/spesific/${media.id}`}>
+                    <div key={media.id} className="accommodation-list card">
+                        <Link to={`/spesific/${media.id}`} className="accommodation-list__card card__card">
                             <img src={media.attributes.main_img} alt={media.attributes.name}></img>
-                            <Heading size="3" title={media.attributes.name} />
-                            <p>{media.attributes.short_description}</p>
-                            <p>{media.attributes.price}</p>
+                            <div className="accommodation-list__text-container card__text-container">
+                                <Heading size="3" title={media.attributes.name} />
+                                <p>{media.attributes.price}€</p>
+                            </div>
+                            <p className="accommodation-list__description">{media.attributes.short_description}</p>
                             {/* <p>{media.attributes.featured}</p> */}
-                        </NavLink>
+                        </Link>
                     </div>
                 )
             })}
 
         </div>
     )
-
-    // console.log(items)
-
-    // return (
-    //     <div className="accommodations">
-    //         {items.map(function(media) {
-    //             console.log(media)
-    //             // const { id, name, short_description, price, description, featured } = media.attributes;
-    //             return <AccommodationItem key={media.id} id={media.id} name={media.attributes.name} short_description={media.attributes.short_description} price={media.attributes.price} description={media.attributes.description} featured={media.attributes.featured} />
-    //         })}
-    //     </div>
-    // )
 }
-
-
-// return (
-        
-//     <div className="card">
-//         {items.map((media) => {
-//             return (
-//                 <div key={media.id}>
-//                     <NavLink to={`/spesific/${media.id}`}>
-//                         <Heading size="3" title={media.attributes.name} />
-//                         <p>{media.attributes.short_description}</p>
-//                         <p>{media.attributes.price}</p>
-//                         {/* <p>{media.attributes.featured}</p> */}
-//                     </NavLink>
-//                 </div>
-//             )
-//         })}
-
-//     </div>
-// )

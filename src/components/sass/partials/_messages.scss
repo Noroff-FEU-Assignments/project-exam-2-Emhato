@@ -1,0 +1,58 @@
+.messages-container {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 60px;
+}
+
+.messages {
+    border: solid 3px $primary-color;
+    display: flex;
+    flex-direction: column;
+    max-width: 80%;
+    margin: auto;
+    padding: 20px;
+    border-radius: 30px;
+}
+
+input[name="handeling"] {
+    display: flex;
+    // margin: auto;
+    // margin-top: -20px;
+}
+
+.handle-lable {
+    font-size: 1.3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.radio-red, .radio-yellow, .radio-green {
+    accent-color: $primary-color;
+    height: 20px;
+    width: 20px;
+}
+
+// .radio-red:checked ~ .messages {
+//     border: solid $primary-color;
+// }
+
+// .radio-yellow:checked ~ .messages {
+//     border: solid $secondary-color;
+// }
+
+// .radio-green:checked ~ .messages {
+//     border: solid $success-color;
+// }
+
+@media only screen and (min-width: $mini-width) {
+    .messages {
+        width: 60%;
+    }
+}
+
+// @media only screen and (min-width: $desktop-width) {
+//     .messages-container {
+//         flex-direction: row;
+//     }
+// }
