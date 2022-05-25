@@ -44,11 +44,12 @@ export default function HomePage() {
         <div className="body">
             <Logo />
             <LogoBig />
-            <img src=""></img>
-            <h1 className="home-h1">Welcome to Holidaze! The place to start your Bergen holiday</h1>
-            {/* <Heading  title="Welcome to Holidaze! The place to start your Bergen holiday"/> */}
-            <SearchBar placeholder="Search accommodations" data={data}/>
-            <Featured />
+            <div className="background-container">
+                <h1 className="home-h1">Welcome to Holidaze! The place to start your Bergen holiday</h1>
+                {/* <Heading  title="Welcome to Holidaze! The place to start your Bergen holiday"/> */}
+                <SearchBar placeholder="Search accommodations" data={data}/>
+                <Featured />
+            </div>
             <Footer />
         </div>
   )

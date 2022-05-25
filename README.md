@@ -1,3 +1,7 @@
+<!-- LOGINDETAILS:
+USERNAME: emma OR emma.tonnessen@gmail.com
+PASWORD: Pass1234 (NB! Uppercase "P") -->
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

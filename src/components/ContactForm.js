@@ -8,7 +8,7 @@ import FormError from "./FormError";
 
 const schema = yup.object().shape({
     first_name: yup.string().required("Please enter your first name").min(3, "Must be at least 3 characters"),
-    last_name: yup.string().required("Please enter your last name").min(4, "Must be at least 4 characters"),
+    last_name: yup.string().required("Please enter your last name").min(2, "Must be at least 2 characters"),
     email: yup.string().required("Please enter your e-mail").email("Please enter a valid e-mail address"),
     message: yup.string().required("Please enter your message").min(10, "Please enter your message (must be at least 10 charachers)"),
 });
@@ -40,7 +40,7 @@ export default function ContactForm() {
             // navigate("/add");
         } catch (error) {
             console.log("error", error);
-            serverError(error.toString());
+            setServerError(error.toString());
         } finally {
             setSubmitting(false);
         }
@@ -52,23 +52,26 @@ export default function ContactForm() {
         <form onSubmit={handleSubmit(onSubmit)}>
             {serverError && <FormError>{serverError}</FormError>}
             <fieldset className="form" disabled={submitting}>
-                {errors.first_name && <span className="form__error">{errors.firstName.message}</span>}
+                
                 <label className="form__label" htmlFor="first_name">First name</label>
                 <input className="form__input" {...register("first_name")} id="first_ame" />
+                {errors.first_name && <FormError>{errors.first_name.message}</FormError>}
+                {/* {errors.name && <FormError>{errors.name.message}</FormError>} */}
                 
-                {errors.last_name && <span className="form__error">{errors.lastName.message}</span>}
                 <label className="form__label" htmlFor="last_name">Last name</label>
                 <input className="form__input" {...register("last_name")} id="last_name" />
+                {errors.last_name && <FormError>{errors.last_name.message}</FormError>}
                 
-                {errors.email && <span className="form__error">{errors.email.message}</span>}
+                
                 <label className="form__label" htmlFor="email">E-mail</label>
                 <input className="form__input" {...register("email")} id="email" />
+                {errors.email && <FormError>{errors.email.message}</FormError>}
 
-                {errors.message && <span className="form__error">{errors.message.message}</span>}
+                
                 <label className="form__label" htmlFor="message">Message</label>
                 <textarea className="form__input form__message" {...register("message")} id="message" />
+                {errors.message && <FormError>{errors.message.message}</FormError>}
                 
-
                 <button className="form__btn">{submitting ? "Sending..." : "Send"}</button>
             </fieldset>
         </form>

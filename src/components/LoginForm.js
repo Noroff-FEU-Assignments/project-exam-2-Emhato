@@ -60,11 +60,14 @@ export default function LoginForm() {
 			<form onSubmit={handleSubmit(onSubmit)}>
 				{loginError && <FormError>{loginError}. Something went wrong. Please make sure you have the correct username and password.</FormError>}
 				<fieldset className="form" disabled={submitting}>
-					<input className="form__input" name="identifier" placeholder="Username" {...register('identifier')} />
+                    <label className="form__label" htmlFor="username">Username</label>
+					<input className="form__input" name="identifier" id="username" {...register('identifier')} />
 					{errors.identifier && <FormError>{errors.identifier.message}</FormError>}
 
-					<input className="form__input" name="password" placeholder="Password" {...register('password')} type="password" />
+                    <label className="form__label" htmlFor="password">Password</label>
+					<input className="form__input" name="password" id="password" {...register('password')} type="password" />
 					{errors.password && <FormError>{errors.password.message}</FormError>}
+
 					<button className="form__btn">{submitting ? "Loggin in..." : "Login"}</button>
 				</fieldset>
 			</form>

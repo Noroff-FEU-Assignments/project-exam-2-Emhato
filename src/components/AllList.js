@@ -48,14 +48,7 @@ export default function AllList() {
     return (
         
         <div className="container">
-            <input type="text" placeholder="Search..." onChange={event => {setSearchTerm(event.target.value)}} />
-            {items.filter((value) => {
-                if (searchTerm ==="") {
-                    return value
-                } else if (value.attributes.name.toLowerCase().includes(searchTerm.toLowerCase())) {
-                    return value
-                }
-            }).map((media) => {
+            {items.map((media) => {
                 return (
                     <div key={media.id} className="accommodation-list card">
                         <Link to={`/spesific/${media.id}`} className="accommodation-list__card card__card">
@@ -74,3 +67,33 @@ export default function AllList() {
         </div>
     )
 }
+
+
+{/* <div className="container featured-container">
+{items.map((media) => {
+    if(media.attributes.featured === true) {
+        return (
+            // <div className="content-container" key={media.id}>
+            //     <li>
+            //         <Link className="card" to={`/spesific/${media.id}`}>
+            //             <div className="card__img" style={{backgroundImage: `url(${media.attributes.main_img})`}}></div>
+            //             <Heading className="card__name" size="3" title={media.attributes.name} />
+            //             <p>{media.attributes.price}€</p>
+            //         </Link>
+            //     </li>
+            // </div>
+            <div key={media.id} className="featured-list card">
+                <Link to={`/spesific/${media.id}`} className="featured-list__card card__card">
+                    <img src={media.attributes.main_img} alt={media.attributes.name}></img>
+                    <div className="featured-list__text-container card__text-container">
+                        <Heading size="3" title={media.attributes.name} />
+                        <p>{media.attributes.price}€</p>
+                    </div>
+                    {/* <p className="accommodation-list__description">{media.attributes.short_description}</p> */}
+                    {/* <p>{media.attributes.featured}</p> */}
+//                 </Link>
+//             </div>
+//         )
+//     }
+// })}
+// </div> */}

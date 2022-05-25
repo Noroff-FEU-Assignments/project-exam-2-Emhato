@@ -8,16 +8,17 @@ import useAxios from "../hooks/useAxios";
 import AuthContext from "../context/AuthContext";
 
 const schema = yup.object().shape({
-    name: yup.string().required("Please add the name of accommodation"),
-    price: yup.number().required("Please add a price"),
+    name: yup.string().required("Please add the name of accommodation").min(5, "Must be at least 5 characters"),
+    price: yup.number().required("Please add a price (please exclude value type. Should be number only)"),
     max_number_of_guests: yup.number().required("Please add how may guests there are room for in this accommodation"),
     // accommodation_type: yup.string().required("Please select accommodation type"),
-    main_img: yup.string().required("Please add an url for the main image of the accommodation"),
-    img_2: yup.string().required("Please add an url for an image"),
-    img_3: yup.string().required("Please add an url for an image"),
-    img_4: yup.string().required("Please add an url for an image"),
-    short_description: yup.string().min(50).max(100).required("Please add a short description of the accommodation(50-100 characthers"),
-    description: yup.string().min(100).max(300).required("Please add a short description of the accommodation(50-100 characthers"),
+    main_img: yup.string().required("Please add an url for the main image of the accommodation").url("Please enter a valid URL"),
+    img_2: yup.string().required("Please add an url for an image").url("Please enter a valid URL"),
+    img_3: yup.string().required("Please add an url for an image").url("Please enter a valid URL"),
+    img_4: yup.string().required("Please add an url for an image").url("Please enter a valid URL"),
+    short_description: yup.string().min(100).max(250).required("Please add a short description of the accommodation(100-250 characthers"),
+    description: yup.string().min(400).max(600).required("Please add a short description of the accommodation(400-600 characthers"),
+    featured: yup.boolean().default(false),
 });
 
 
@@ -32,13 +33,12 @@ export default function AddForm() {
         resolver: yupResolver(schema),
     });
 
-    console.log(AuthContext)
+    // console.log(AuthContext)
 
     async function onSubmit(data) {
+        // data.preventDefault();
         setSubmitting(true);
         setServerError(null);
-
-        // data.status = "publish";
 
         const postData = { data: data }
 
@@ -50,7 +50,8 @@ export default function AddForm() {
             navigate("/add");
         } catch (error) {
             console.log("error", error);
-            serverError(error.toString());
+            //serverError(error.toString()); CHANGE FROM THIS ON THE OTHER FORMS
+            setServerError(error.toString());
         } finally {
             setSubmitting(false);
         }
@@ -72,16 +73,6 @@ export default function AddForm() {
                 <input className="form__input" name="max_number_of_guests" id="max_number_of_guests" {...register('max_number_of_guests')} />
                 {errors.max_number_of_guests && <FormError>{errors.max_number_of_guests.message}</FormError>}
 
-                {/* <div>
-                    <label htmlFor="accommodation_type">Accommodation type</label>
-                    <select {...register('accommodation_type')} id="accommodation_type">
-                        <option value="hotel">Hotel</option>
-                        <option value="cabin">Cabin</option>
-                        <option value="apartment">Apartment</option>
-                        <option value="hostel">Hostel</option>
-                    </select>
-                </div> */}
-
                 <label className="form__label" htmlFor="main_img">Main image (url)</label>
                 <input className="form__input" name="main_img" id="main_img" {...register('main_img')} />
                 {errors.main_img && <FormError>{errors.main_img.message}</FormError>}
@@ -100,20 +91,34 @@ export default function AddForm() {
 
                 <label className="form__label" htmlFor="short_description">Short description (50-100 characthers)</label>
                 <textarea className="form__input form__message" name="short_description" {...register('short_description')}></textarea>
-                {errors.short_description && <FormError>{errors.short_description}</FormError>}
+                {errors.short_description && <FormError>{errors.short_description.message}</FormError>}
 
                 <label className="form__label" htmlFor="description">Description (100-300 characthers)</label>
                 <textarea className="form__input form__message" name="description" {...register('description')}></textarea>
-                {errors.description && <FormError>{errors.description}</FormError>}
+                {errors.description && <FormError>{errors.description.message}</FormError>}
 
                 <label className="form__label" htmlFor="featured">Add to featured list</label>
-                <input className="form__checkbox" type="checkbox" id="featured" />
+                <input className="form__checkbox" type="checkbox" id="featured" {...register('featured')} />
 
                 <button className="form__btn">{submitting ? "Submitting..." : "Submit"}</button>
             </fieldset>
         </form>
     )
 }
+
+
+
+{/* <div>
+    <label htmlFor="accommodation_type">Accommodation type</label>
+    <select {...register('accommodation_type')} id="accommodation_type">
+        <option value="hotel">Hotel</option>
+        <option value="cabin">Cabin</option>
+        <option value="apartment">Apartment</option>
+        <option value="hostel">Hostel</option>
+    </select>
+</div> */}
+
+
 
 {/* <form onSubmit={handleSubmit(onSubmit)}>
 {loginError && <FormError>{loginError}. Something went wrong. Please make sure you have the correct username and password.</FormError>}

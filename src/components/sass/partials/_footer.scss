@@ -1,5 +1,6 @@
 .footer {
-    background-color: $primary-color;
+    // background-color: $primary-color;
+    border-top: solid 2px $primary-color;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -11,9 +12,9 @@
         margin-left: -25px;
     }
 
-    &__ul a {
-        color: #fff;
-    }
+    // &__ul a {
+    //     color: #fff;
+    // }
 
     &__admin-container {
         display: flex;
@@ -22,9 +23,9 @@
         margin-right: 15px;
     }
 
-    &__admin-container a, p {
-        color: #fff;
-    }
+    // &__admin-container a, p {
+    //     color: #fff;
+    // }
 
     &__admin-container p {
         margin-bottom: 0;

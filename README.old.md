@@ -1,5 +1,5 @@
 <!-- LOGINDETAILS:
-USERNAME: emma
+USERNAME: emma OR emma.tonnessen@gmail.com
 PASWORD: Pass1234 (NB! Uppercase "P") -->
 
 # Project Exam 2

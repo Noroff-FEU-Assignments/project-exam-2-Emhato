@@ -1,3 +1,12 @@
+// Errors
+
+.form-error {
+    color: red;
+    width: 80%;
+    margin-top: -30px;
+    margin-bottom: 30px;
+}
+
 .form {
     display: flex;
     flex-direction: column;
@@ -6,12 +15,12 @@
     margin: auto;
     border: none;
 
-    &__error {
-        color: red;
-        align-self: flex-end;
-        margin-right: 60px;
-        display: none;
-    }
+    // &__error {
+    //     color: red;
+    //     align-self: flex-end;
+    //     margin-right: 60px;
+    //     display: none;
+    // }
 
     &__input {
         width: 80%;
@@ -54,6 +63,7 @@
         font-weight: 700;
         transition: 0.5s;
         border-radius: 0 15px;
+        cursor: pointer;
     }
 
     &__btn:hover {
