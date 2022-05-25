@@ -1,5 +1,5 @@
 .description {
-    max-width: 80%;
+    max-width: 60%;
     margin: auto;
 }
 
@@ -16,10 +16,6 @@
 }
 
 .enquiery-cta {
-    // margin-top: 10px;
-    // margin-bottom: 60px;
-    // margin: 60px auto;
-    // text-align: center;
     border: none;
     color: #fff;
     background: rgb(242,135,41);
@@ -53,8 +49,7 @@
     bottom: 2em;
     left: 2em;
     right: 2em;
-    background-color: $secondary-color;
-    background: rgb(242,242,242);
+    background-color: $background-color;
     box-shadow: 0 0 0 4em rgba(black, 0.6);
     overflow-y: scroll;
 }

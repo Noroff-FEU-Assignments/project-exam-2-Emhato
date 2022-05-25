@@ -83,8 +83,6 @@ export default function EnquieriesForm() {
 
     // Modal display/ display none
 
-    // const [formOpen, setFormOpen] = useState(false);
-
     const handleToggle = () => {
         setFormOpen(prev => !prev)
     }
@@ -95,8 +93,6 @@ export default function EnquieriesForm() {
 
     return (
         <>
-        {/* <Spesific /> */}
-        {/* <button className="form__btn">Make enquiery</button> */}
         <div className="cta-container">
             <button className="enquiery-cta" onClick={handleToggle}>Make an enquiery</button>
         </div>
@@ -149,42 +145,3 @@ export default function EnquieriesForm() {
         </>
     )
 }
-
-{/* <form onSubmit={handleSubmit(onSubmit)}  className="container form-modal-container"> */}
-
-
-
-
-
-// import { NavLink } from "react-router-dom";
-// import React, { useState } from "react"
-
-// export default function Layout() {
-
-//     // hamburger source: https://ibaslogic.com/how-to-add-hamburger-menu-in-react/
-
-//     const [burgerOpen, setburgerOpen] = useState(false);
-
-//     const handleToggle = () => {
-//         setburgerOpen(prev => !prev)
-//     }
-
-//     const closeMenu = () => {
-//         setburgerOpen(false)
-//     }
-
-//   return (
-//     <>
-//         <header>
-//             <button onClick={handleToggle} className="hamburger"></button>
-//             <nav className="nav">
-//                 <ul className={`nav__ul ${burgerOpen ? "nav__showMenu" : ""}`}>
-//                     <NavLink onClick={() => closeMenu()} className="nav__link" to="/">Home</NavLink>
-//                     <NavLink onClick={() => closeMenu()} className="nav__link" to="/accommodations">Accommodations</NavLink>
-//                     <NavLink onClick={() => closeMenu()} className="nav__link" to="/contact">Contact</NavLink>
-//                 </ul>
-//             </nav>
-//         </header>
-//     </>  
-//   )
-// }
