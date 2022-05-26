@@ -44,6 +44,21 @@
         margin-bottom: 5px;
     }
 
+    // checkbox
+
+    &__checkbox-container {
+        display: flex;
+        // align-items: bottom;
+        // justify-content: center;
+        gap: 50px;
+        margin-bottom: 40px;
+    }
+
+    &__checkbox-container label {
+        align-self: center;
+        
+    }
+
     &__checkbox {
         cursor: pointer;
         height: 40px;
@@ -52,6 +67,8 @@
         box-sizing: content-box;
     }
 
+
+    // Buttons
     &__btn {
         margin-top: 10px;
         margin-bottom: 60px;
@@ -69,7 +86,7 @@
     }
 
     &__btn:hover {
-        cursor: pointer;
+        // cursor: pointer;
         box-shadow: none;
     }
 }

@@ -1,5 +1,5 @@
 .description {
-    max-width: 60%;
+    max-width: 80%;
     margin: auto;
 }
 
@@ -75,6 +75,10 @@
 }
 
 @media only screen and (min-width: $mini-width) {
+    .description {
+        width: 60%;
+    }
+
     .form-modal {
         top: 3em;
         bottom: 3em;

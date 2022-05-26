@@ -104,42 +104,14 @@ export default function AddForm() {
                  
                 {/* <TypeDropdown {...register('accommodation_type')}/> */}
 
+                <div className="form__checkbox-container">
+                    <label className="form__label" htmlFor="featured">Add to featured list</label>
+                    <input className="form__checkbox" type="checkbox" id="featured" {...register('featured')} />                    
+                </div>
 
-                <label className="form__label" htmlFor="featured">Add to featured list</label>
-                <input className="form__checkbox" type="checkbox" id="featured" {...register('featured')} />
 
                 <button className="form__btn">{submitting ? "Submitting..." : "Submit"}</button>
             </fieldset>
         </form>
     )
 }
-
-
-
-{/* <div>
-    <label htmlFor="accommodation_type">Accommodation type</label>
-    <select {...register('accommodation_type')} id="accommodation_type">
-        <option value="hotel">Hotel</option>
-        <option value="cabin">Cabin</option>
-        <option value="apartment">Apartment</option>
-        <option value="hostel">Hostel</option>
-    </select>
-</div> */}
-
-
-
-{/* <form onSubmit={handleSubmit(onSubmit)}>
-{loginError && <FormError>{loginError}. Something went wrong. Please make sure you have the correct username and password.</FormError>}
-<fieldset disabled={submitting}>
-    <div>
-        <input name="identifier" placeholder="Username" {...register('identifier')} />
-        {errors.identifier && <FormError>{errors.identifier.message}</FormError>}
-    </div>
-
-    <div>
-        <input name="password" placeholder="Password" {...register('password')} type="password" />
-        {errors.password && <FormError>{errors.password.message}</FormError>}
-    </div>
-    <button>{submitting ? "Loggin in..." : "Login"}</button>
-</fieldset>
-</form> */}

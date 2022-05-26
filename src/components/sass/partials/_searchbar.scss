@@ -14,13 +14,13 @@
     
     &__input {
         height: 40px;
-        width: 400px;
+        width: 300px;
         // border: solid 2px $primary-color;
         border: none;
         border-radius: 30px;
         // background-color: $background-color;
         background: rgb(242,135,41);
-        background: linear-gradient(0deg, rgba(242,135,41,1) 0%, rgba(191,69,42,1) 100%);
+        background: linear-gradient(0deg, rgba(242,135,41,0.9) 0%, rgba(191,69,42,0.9) 100%);
         // background: rgba(0, 0, 0, 0.8);
         // margin-top: 75px;
         padding-left: 10px;
@@ -41,10 +41,10 @@
     }
 
     &__result {
-        margin-top: 10px;
+        margin-top: 5epx;
         padding-left: 20px;
         border-radius: 10px;
-        height: 200px;
+        height: 150px;
         width: 370px;
         background: rgba(0, 0, 0, 0.8);
         overflow: hidden;
@@ -57,5 +57,17 @@
 
     &__item:hover {
         color: $secondary-color;
+    }
+}
+
+@media only screen and (min-width: $desktop-width) {
+    .search {
+        &__input {
+            width: 400px;
+        }
+
+        &__result {
+            width: 370px;
+        }
     }
 }

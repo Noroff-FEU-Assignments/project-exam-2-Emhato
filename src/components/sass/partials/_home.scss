@@ -1,51 +1,108 @@
-// .body {
-//     background-image: url(../../../images/bergen-docs.JPG);
+// // .body {
+// //     background-image: url(../../../images/bergen-docs.JPG);
+// //     background-position: center;
+// //     background-size: contain;
+// //     background-repeat: no-repeat;
+// // }
+
+// .background-container {
+//     background-image: url(../../../images/holidaze-background.jpg);
 //     background-position: center;
 //     background-size: contain;
 //     background-repeat: no-repeat;
 // }
 
+// .home-h1 {
+//     animation: ease-in fadeIn 4s;
+//     // margin-top: -190px;
+//     // padding: 200px;
+//     // width: 100%;
+//     padding: 100px 200px;
+//     margin-top: -20px;
+//     // padding: 200px 20px 200px 20px;
+//     // background-image: url(../../../images/holidaze-background.jpg);
+//     // background-position: center;
+//     // background-size: cover;
+//     // background-repeat: no-repeat;
+// }
+
+// .featured-container {
+//     margin-top: 100px;
+// }
+
+// @media only screen and (min-width: $desktop-width) {
+//     .featured-container {
+//         margin: auto;
+//         margin-top: 100px;
+//         display: flex;
+//         flex-wrap: wrap;
+//         max-width: 90%;
+//         justify-content: space-between;
+//         padding-bottom: 100px;
+//     }
+
+//     .featured-list {
+
+//         &__card {
+//             max-width: 200px;
+//             height: 200px;
+//         }
+//     }
+// }
+
+
+
+
+// Background image
 .background-container {
     background-image: url(../../../images/holidaze-background.jpg);
     background-position: center;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
-}
+    height: 600px;
+    padding-top: 150px;
+    margin-top: -60px;
+    
+}   
 
+// Header
 .home-h1 {
     animation: ease-in fadeIn 4s;
-    // margin-top: -190px;
-    // padding: 200px;
-    // width: 100%;
-    padding: 100px 200px;
-    margin-top: -20px;
-    // padding: 200px 20px 200px 20px;
-    // background-image: url(../../../images/holidaze-background.jpg);
-    // background-position: center;
-    // background-size: cover;
-    // background-repeat: no-repeat;
+    margin: 0 auto;
+    margin-bottom: 80px;
+    max-width: 95%;
+    text-shadow: 3px 6px 9px rgba(0, 0, 0, 0.3);
 }
 
+// Cards 
 .featured-container {
-    margin-top: 100px;
+    margin-top: -150px;
 }
+
 
 @media only screen and (min-width: $desktop-width) {
-    .featured-container {
-        margin: auto;
-        margin-top: 100px;
-        display: flex;
-        flex-wrap: wrap;
-        max-width: 90%;
-        justify-content: space-between;
-        padding-bottom: 100px;
+    // Background image
+    .background-container {
+        height: 500px;
+        margin-top: -120px;
+        background-position: center;
+        background-size: cover;
+        
     }
 
-    .featured-list {
+    // Featured carousel
 
-        &__card {
-            max-width: 200px;
-            height: 200px;
-        }
+    .featured-container {
+        margin-top: -200px;
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: 37%;
+
+        overflow-x: auto;
+        overscroll-behavior-inline: contain;
+    }
+
+    .featured-list__card {
+        margin-bottom: 20px;
     }
 }

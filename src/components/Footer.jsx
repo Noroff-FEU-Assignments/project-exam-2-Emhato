@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuthContext from '../context/AuthContext';
+import LogoBig from './LogoBig';
 
 export default function Footer() {
     const [auth, setAuth] = useContext(AuthContext);
@@ -15,21 +16,22 @@ export default function Footer() {
     return (
         <footer className="footer">
             <ul className="footer__ul">
-                <NavLink to="/">Home</NavLink>
-                <NavLink to="/accommodations">Accommodations</NavLink>
-                <NavLink to="/contact">Contact</NavLink>
+                <Link to="/">Home</Link>
+                <Link to="/accommodations">Accommodations</Link>
+                <Link to="/contact">Contact</Link>
             </ul>
+            <LogoBig />
             <div className="footer__admin-container">
                 <p>Admin</p>
                 {auth ? (
                     <>
-                        <NavLink to="/messages">Messages</NavLink>
-                        <NavLink to="/enquieries">Enquieries</NavLink>
-                        <NavLink to="/add">Add accommodation</NavLink>
+                        <Link to="/messages">Messages</Link>
+                        <Link to="/enquieries">Enquieries</Link>
+                        <Link to="/add">Add accommodation</Link>
                         <button onClick={logout}>Log out</button>
                     </>
                 ) : (
-                    <NavLink to="/login">Login</NavLink>
+                    <Link to="/login">Login</Link>
                 )}
             </div>
         </footer>
