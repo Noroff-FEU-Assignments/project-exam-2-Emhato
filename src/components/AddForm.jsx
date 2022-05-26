@@ -1,13 +1,11 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import FormError from "./FormError";
 import useAxios from "../hooks/useAxios";
-import AuthContext from "../context/AuthContext";
 import FormSuccess from "./FormSuccess";
-import TypeDropdown from "./TypeDropdown";
+// import TypeDropdown from "./TypeDropdown";
 
 const schema = yup.object().shape({
     name: yup.string().required("Please add the name of accommodation").min(5, "Must be at least 5 characters"),
@@ -28,30 +26,25 @@ export default function AddForm() {
     const [submitting, setSubmitting] = useState(false);
     const [serverError, setServerError] = useState(null);
     const [success, setSuccess] = useState(null)
+    // Source: https://stackoverflow.com/questions/59835355/get-textarea-character-count-using-reactjs-with-help-of-usestate-hook
+    const [shortCount, setShortCount] = useState(0)
+    const [descriptionCount, setDescriptionCount] = useState(0)
 
-    // const navigate = useNavigate();
     const http = useAxios();
 
     const { register, handleSubmit, formState:{errors}, } = useForm({
         resolver: yupResolver(schema),
     });
 
-    // console.log(AuthContext)
-
     async function onSubmit(data) {
-        // data.preventDefault();
         setSubmitting(true);
         setServerError(null);
 
         const postData = { data: data }
 
-        // console.log(data);
-
         try {
             const response = await http.post("api/accommodations/", postData);
-            console.log("response", response.data);
             setSuccess("Success! You've added another accommodation to our site!");
-            // navigate("/add");
         } catch (error) {
             console.log("error", error);
             setServerError(error.toString());
@@ -93,22 +86,22 @@ export default function AddForm() {
                 <input className="form__input" name="img_4" id="img_4" {...register('img_4')} />
                 {errors.img_4 && <FormError>{errors.img_4.message}</FormError>}
 
-                <label className="form__label" htmlFor="short_description">Short description (50-100 characthers)</label>
-                <textarea className="form__input form__message" name="short_description" {...register('short_description')}></textarea>
+                <label className="form__label" htmlFor="short_description">Short description (100-250 characters)</label>
+                <textarea className="form__input form__message" name="short_description" {...register('short_description')} onChange={e => setShortCount(e.target.value.length)}></textarea>
+                <p className="form__count">{shortCount}/250</p>
                 {errors.short_description && <FormError>{errors.short_description.message}</FormError>}
 
-                <label className="form__label" htmlFor="description">Description (100-300 characthers)</label>
-                <textarea className="form__input form__message" name="description" {...register('description')}></textarea>
+                <label className="form__label" htmlFor="description">Description (400-600 characters)</label>
+                <textarea className="form__input form__message" name="description" {...register('description')} onChange={e => setDescriptionCount(e.target.value.length)}></textarea>
+                <p className="form__count">{descriptionCount}/600</p>
                 {errors.description && <FormError>{errors.description.message}</FormError>}
-
-                 
+  
                 {/* <TypeDropdown {...register('accommodation_type')}/> */}
 
                 <div className="form__checkbox-container">
                     <label className="form__label" htmlFor="featured">Add to featured list</label>
                     <input className="form__checkbox" type="checkbox" id="featured" {...register('featured')} />                    
                 </div>
-
 
                 <button className="form__btn">{submitting ? "Submitting..." : "Submit"}</button>
             </fieldset>

@@ -5,7 +5,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 import { BASE_URL } from "../constants/Api";
 import FormError from "./FormError";
-// import Heading from "./Heading";
 import FormSuccess from "./FormSuccess";
 
 const schema = yup.object().shape({
@@ -31,30 +30,11 @@ export default function ContactForm() {
 
         const url = BASE_URL + "api/contacts"
 
-        // data.status = "publish";
-
         const postData = { data: data }
-
-        // console.log(data);
 
         try {
             const response = await axios.post(url, postData);
-            console.log("response", response.data);
             setSuccess("Thank you for contacting us! We'll get back to you soon!");
-            // Trying succes message
-
-            // return <p>Success</p>
-
-            // const json = await response.json();
-            // if(json.created_at) {
-            //     return <p>success</p>
-            // }
-
-
-            // success message fin
-
-
-            // navigate("/add");
         } catch (error) {
             console.log("error", error);
             setServerError(error.toString());
@@ -62,8 +42,6 @@ export default function ContactForm() {
             setSubmitting(false);
         }
     }
-
-    console.log(errors);
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -74,17 +52,14 @@ export default function ContactForm() {
                 <label className="form__label" htmlFor="first_name">First name</label>
                 <input className="form__input" {...register("first_name")} id="first_ame" />
                 {errors.first_name && <FormError>{errors.first_name.message}</FormError>}
-                {/* {errors.name && <FormError>{errors.name.message}</FormError>} */}
                 
                 <label className="form__label" htmlFor="last_name">Last name</label>
                 <input className="form__input" {...register("last_name")} id="last_name" />
                 {errors.last_name && <FormError>{errors.last_name.message}</FormError>}
-                
-                
+                                
                 <label className="form__label" htmlFor="email">E-mail</label>
                 <input className="form__input" {...register("email")} id="email" />
                 {errors.email && <FormError>{errors.email.message}</FormError>}
-
                 
                 <label className="form__label" htmlFor="message">Message</label>
                 <textarea className="form__input form__message" {...register("message")} id="message" />

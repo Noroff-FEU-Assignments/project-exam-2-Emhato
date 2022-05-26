@@ -1,14 +1,8 @@
 .footer {
-    // background-color: $primary-color;
     border-top: solid 2px $primary-color;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    // background: rgb(242,242,242);
-    // background: linear-gradient(45deg, rgba(242,242,242,1) 0%, rgba(242,135,41,1) 100%);
-    // background-size: 400%;
-    // animation: gradient-animation 20s infinite alternate;
 
     &__ul {
         display: flex;
@@ -41,21 +35,14 @@
 
     &__admin-container button {
         background-color: $primary-color;
-        // border: solid #fff;
-        // color: #fff;
         max-width: fit-content;
         margin-bottom: 20px;
         padding: 8px;
         border: none;
         color: #fff;
-        // background: rgb(242,135,41);
-        // background: linear-gradient(0deg, rgba(242,135,41,1) 0%, rgba(191,69,42,1) 100%);
-        // padding: 10px;
-        // font-size: 1.5rem;
         box-shadow: 3px 6px 9px rgba(0, 0, 0, 0.3);
         font-weight: 700;
         transition: 0.5s;
-        // border-radius: 0 15px;
         cursor: pointer;
     }
 

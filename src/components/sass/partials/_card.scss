@@ -11,28 +11,14 @@
     &__card {
         max-width: 80%;
         margin-top: 50px;
-        // margin-bottom: 20px;
         background-color: $background-color;
-        // background-color: #EADDD2;
-        // background-color: $secondary-color;
-        // background-color: rgba(0, 0, 0, 0.6);
-
-        // background: rgb(191,69,42);
-        // background: linear-gradient(45deg, rgba(191,69,42,1) 0%, rgba(240,140,117,1) 19%, rgba(218,172,150,1) 49%, rgba(219,153,96,1) 74%, rgba(242,135,41,1) 100%);
-        // background: rgb(242,242,242);
-        // background: linear-gradient(45deg, rgba(242,242,242,1) 0%, rgba(242,135,41,1) 100%);
-        // background-size: 400%;
-        // animation: gradient-animation 20s infinite alternate;
-
         padding: 20px;
         border: solid $secondary-color;
         border-radius: 20px;
         box-shadow:  3px 6px 9px rgba(0, 0, 0, 0.6);
-        // color: #fff;
         color: #000;
         font-size: 1rem;
         font-weight: 600;
-        // margin-bottom: 200px;
     }
 
     &__card > img{

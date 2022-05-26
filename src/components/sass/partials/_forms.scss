@@ -48,8 +48,6 @@
 
     &__checkbox-container {
         display: flex;
-        // align-items: bottom;
-        // justify-content: center;
         gap: 50px;
         margin-bottom: 40px;
     }
@@ -67,8 +65,15 @@
         box-sizing: content-box;
     }
 
+    // Character counts
+
+    &__count {
+        margin-top: -70px;
+        margin-bottom: 40px;
+    }
 
     // Buttons
+    
     &__btn {
         margin-top: 10px;
         margin-bottom: 60px;
@@ -86,7 +91,6 @@
     }
 
     &__btn:hover {
-        // cursor: pointer;
         box-shadow: none;
     }
 }

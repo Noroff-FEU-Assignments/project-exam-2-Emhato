@@ -1,5 +1,4 @@
 // Source: https://www.youtube.com/watch?v=x7niho285qs
-
 import React, { useState } from 'react'
 
 export default function SearchBar({placeholder, data}) {

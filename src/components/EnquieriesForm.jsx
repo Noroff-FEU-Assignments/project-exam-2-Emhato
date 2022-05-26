@@ -6,7 +6,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 import FormError from "./FormError";
 import { BASE_URL } from "../constants/Api";
-// import Spesific from "./Spesific";
 import Heading from "./Heading";
 import FormSuccess from "./FormSuccess";
 
@@ -44,7 +43,6 @@ export default function EnquieriesForm() {
         async function getData() {
             try {
                 const response = await axios.get(urlApi);
-                console.log(response.data.data);
                 setItems(response.data.data);
             } catch(error) {
                 console.log(error);
@@ -57,7 +55,7 @@ export default function EnquieriesForm() {
 
     }, []);
 
-    if(loading) return <div>Loading accommodation...</div>
+    if(loading) return <div className="loading"></div>
 
     if(error) return <div>An error occured: {error}</div>
 
@@ -72,8 +70,6 @@ export default function EnquieriesForm() {
         try {
             const response = await axios.post(url, postData);
             setSuccess("Thank you for making an enquiery! We'll get back to you soon!");
-            // console.log("response", response.data);
-            // navigate("/add");
         } catch (error) {
             console.log("error", error);
             setServerError(error.toString());
@@ -81,8 +77,6 @@ export default function EnquieriesForm() {
             setSubmitting(false);
         }
     }
-
-    // console.log(errors);
 
     // Modal display/ display none
 
@@ -140,7 +134,6 @@ export default function EnquieriesForm() {
                 {errors.message && <FormError>{errors.message.message}</FormError>}
 
                 <button className="form__btn">{submitting ? "Sending..." : "Make enquiery"}</button>
-
             </fieldset>
         </form>
         </>

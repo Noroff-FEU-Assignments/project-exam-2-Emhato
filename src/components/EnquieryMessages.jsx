@@ -1,11 +1,8 @@
 import React from 'react'
 import { useState, useEffect } from "react";
 import useAxios from "../hooks/useAxios";
-import AuthContext from "../context/AuthContext";
 
 export default function EnquieryMessages() {
-    // const [submitting, setSubmitting] = useState(false);
-    // const [serverError, setServerError] = useState(null);
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -16,8 +13,6 @@ export default function EnquieryMessages() {
         async function getData() {
             try {
                 const response = await http.get("api/enquiries");
-                console.log("response", response.data.data);
-                // console.log(response.data.data[0]);
                 setItems(response.data.data);
             } catch(error) {
                 console.log(error);
@@ -26,13 +21,29 @@ export default function EnquieryMessages() {
                 setLoading(false);
             }
         }
-
         getData();
     }, []);
+
+    if(loading) return <div className="loading"></div>
+
+    if(error) return <div>An error occured: {error}</div>
 
     return (
         <div className="messages-container">
             {items.map((media) => {
+                // Formatting dates
+                function dateFormat(value, local = "en-GB") {
+                    return new Date(value).toLocaleDateString(local);
+                }
+
+                const timestamp = media.attributes.publishedAt;
+                const checkin = media.attributes.start_date;
+                const checkout = media.attributes.end_date;
+
+                const formattedDate = dateFormat(timestamp);
+                const formattedCheckin = dateFormat(checkin);
+                const formattedCheckout = dateFormat(checkout)
+
                 return (
                     <div key={media.id}>
                         {/* <label htmlFor="not-handled">Not handled</label>
@@ -50,10 +61,10 @@ export default function EnquieryMessages() {
                             <p>First name: {media.attributes.first_name}</p>
                             <p>Last name: {media.attributes.last_name}</p>
                             <p>Email: {media.attributes.email}</p>
-                            <p>Checkin: {media.attributes.start_date}</p>
-                            <p>Checkout: {media.attributes.end_date}</p>
+                            <p>Checkin: {formattedCheckin}</p>
+                            <p>Checkout: {formattedCheckout}</p>
                             <p>Message: {media.attributes.message}</p>
-                            {/* <p>Date: {media.attributes.publishedAt}</p> */}
+                            <p>Enquiery received: {formattedDate}</p>
                         </div>
                     </div>
                 )

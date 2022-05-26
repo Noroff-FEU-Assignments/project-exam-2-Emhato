@@ -30,6 +30,9 @@ export default function AccommodationPage() {
         getData();
     }, []);
 
+    if(loading) return <div className="loading"></div>
+
+    if(error) return <div>An error occured: {error}</div>
 
     return (
         <>

@@ -30,14 +30,17 @@ export default function HomePage() {
         getData();
     }, []);
 
+    if(loading) return <div className="loading"></div>
+
+    if(error) return <div>An error occured: {error}</div>
+
     return (
         <div className="body">
             <Logo />
             <LogoBig />
             <div className="background-container">
                 <h1 className="home-h1">Welcome to Holidaze! The place to start your Bergen holiday</h1>
-                <SearchBar placeholder="Search accommodations" data={data}/>
-                
+                <SearchBar placeholder="Search accommodations" data={data}/>                
             </div>
             <Featured />
             <Footer />

@@ -11,7 +11,6 @@ export default function TypeDropdown({register}) {
         async function getType() {
             try {
                 const response = await http.get("api/accommodations");
-                console.log("response", response.data);
                 setType(response.data.data);
             } catch(error) {
                 console.log(error);
@@ -42,5 +41,3 @@ TypeDropdown.propTypes = {
 TypeDropdown.defaultProps = {
     register: () => {},
 };
-
-//                 <input className="form__input" {...register("first_name")} id="first_name" />
