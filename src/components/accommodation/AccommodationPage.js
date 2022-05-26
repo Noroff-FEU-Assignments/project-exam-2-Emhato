@@ -1,4 +1,6 @@
 import Heading from "../Heading";
+import Logo from "../Logo";
+import LogoBig from "../LogoBig";
 import AllList from "../AllList";
 import Footer from "../Footer";
 import SearchBar from "../SearchBar";
@@ -38,6 +40,8 @@ export default function AccommodationPage() {
 
     return (
         <>
+            <Logo />
+            <LogoBig />
             <Heading title="Accommodations"/>
             <SearchBar placeholder="Search accommodations" data={data}/>
             <AllList />

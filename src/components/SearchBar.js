@@ -22,7 +22,16 @@ export default function SearchBar({placeholder, data}) {
     return (
         <div className="search">
             <div className="search__inputs">
-                <input className="search__input" type="text" placeholder={placeholder} onChange={handleSearch}></input>
+                <input className="search__input" type="text" placeholder={placeholder} onChange={handleSearch} aria-label="Search"></input>
+                <div className="search__icon">
+                    <svg id="search-icon" xmlns="http://www.w3.org/2000/svg" width="25.362" height="25.362" viewBox="0 0 25.362 25.362">
+                        <g id="Ellipse_4" data-name="Ellipse 4" fill="none" stroke="#ffffff" strokeWidth="3">
+                            <circle cx="10.56" cy="10.56" r="10.56" stroke="none"/>
+                            <circle cx="10.56" cy="10.56" r="9.06" fill="none"/>
+                        </g>
+                        <line id="Line_22" data-name="Line 22" x2="8" transform="translate(17.584 17.584) rotate(45)" fill="none" stroke="#ffffff" strokeLinecap="round" strokeWidth="3"/>
+                    </svg>
+                </div>
             </div>
             { searchTerm.length !== 0 && (
                 <div className="search__result">

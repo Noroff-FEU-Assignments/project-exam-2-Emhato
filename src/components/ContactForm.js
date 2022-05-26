@@ -5,6 +5,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 import { BASE_URL } from "../constants/Api";
 import FormError from "./FormError";
+// import Heading from "./Heading";
+import FormSuccess from "./FormSuccess";
 
 const schema = yup.object().shape({
     first_name: yup.string().required("Please enter your first name").min(3, "Must be at least 3 characters"),
@@ -16,6 +18,7 @@ const schema = yup.object().shape({
 export default function ContactForm() {
     const [submitting, setSubmitting] = useState(false);
     const [serverError, setServerError] = useState(null);
+    const [success, setSuccess] = useState(null)
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(schema),
@@ -37,6 +40,20 @@ export default function ContactForm() {
         try {
             const response = await axios.post(url, postData);
             console.log("response", response.data);
+            setSuccess("Thank you for contacting us! We'll get back to you soon!");
+            // Trying succes message
+
+            // return <p>Success</p>
+
+            // const json = await response.json();
+            // if(json.created_at) {
+            //     return <p>success</p>
+            // }
+
+
+            // success message fin
+
+
             // navigate("/add");
         } catch (error) {
             console.log("error", error);
@@ -51,6 +68,7 @@ export default function ContactForm() {
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             {serverError && <FormError>{serverError}</FormError>}
+            {success && <FormSuccess content="Thank you for contacting us! We'll get back to you soon!"></FormSuccess>}
             <fieldset className="form" disabled={submitting}>
                 
                 <label className="form__label" htmlFor="first_name">First name</label>

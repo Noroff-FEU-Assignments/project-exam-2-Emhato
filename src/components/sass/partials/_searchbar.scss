@@ -6,13 +6,22 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    &__inputs {
+        display: flex;
+        align-items: center;
+    }
     
     &__input {
         height: 40px;
-        width: 300px;
+        width: 400px;
+        // border: solid 2px $primary-color;
         border: none;
         border-radius: 30px;
-        background: rgba(0, 0, 0, 0.8);
+        // background-color: $background-color;
+        background: rgb(242,135,41);
+        background: linear-gradient(0deg, rgba(242,135,41,1) 0%, rgba(191,69,42,1) 100%);
+        // background: rgba(0, 0, 0, 0.8);
         // margin-top: 75px;
         padding-left: 10px;
         box-shadow:  3px 6px 9px rgba(0, 0, 0, 0.6);
@@ -27,12 +36,16 @@
         font-size: 1rem;
     }
 
+    &__icon {
+        margin-left: -40px;
+    }
+
     &__result {
         margin-top: 10px;
         padding-left: 20px;
         border-radius: 10px;
         height: 200px;
-        width: 300px;
+        width: 370px;
         background: rgba(0, 0, 0, 0.8);
         overflow: hidden;
         overflow-y: auto;

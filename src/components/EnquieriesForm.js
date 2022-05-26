@@ -8,6 +8,7 @@ import FormError from "./FormError";
 import { BASE_URL } from "../constants/Api";
 // import Spesific from "./Spesific";
 import Heading from "./Heading";
+import FormSuccess from "./FormSuccess";
 
 
 const schema = yup.object().shape({
@@ -24,6 +25,7 @@ export default function EnquieriesForm() {
     const [formOpen, setFormOpen] = useState(false);
     const [submitting, setSubmitting] = useState(false);
     const [serverError, setServerError] = useState(null);
+    const [success, setSuccess] = useState(null)
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(schema),
@@ -69,6 +71,7 @@ export default function EnquieriesForm() {
 
         try {
             const response = await axios.post(url, postData);
+            setSuccess("Thank you for making an enquiery! We'll get back to you soon!");
             // console.log("response", response.data);
             // navigate("/add");
         } catch (error) {
@@ -106,9 +109,10 @@ export default function EnquieriesForm() {
                 </svg>
             </button>
             {serverError && <FormError>{serverError}</FormError>}
+            {success && <FormSuccess content="Thank you for making an Enquiery! We'll get back to you soon!"></FormSuccess>}
             <fieldset className="form form-modal" disabled={submitting}>
                 <Heading size="2" title="Make an enqiery"/>
-                
+
                 <input className="hide-name" {...register("accommodation_name")} id="accommodation_name" value={items.attributes.name}/>
 
                 <label className="form__label" htmlFor="first_name">First name</label>

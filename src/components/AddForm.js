@@ -6,6 +6,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import FormError from "./FormError";
 import useAxios from "../hooks/useAxios";
 import AuthContext from "../context/AuthContext";
+import FormSuccess from "./FormSuccess";
+import TypeDropdown from "./TypeDropdown";
 
 const schema = yup.object().shape({
     name: yup.string().required("Please add the name of accommodation").min(5, "Must be at least 5 characters"),
@@ -25,8 +27,9 @@ const schema = yup.object().shape({
 export default function AddForm() {
     const [submitting, setSubmitting] = useState(false);
     const [serverError, setServerError] = useState(null);
+    const [success, setSuccess] = useState(null)
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const http = useAxios();
 
     const { register, handleSubmit, formState:{errors}, } = useForm({
@@ -47,10 +50,10 @@ export default function AddForm() {
         try {
             const response = await http.post("api/accommodations/", postData);
             console.log("response", response.data);
-            navigate("/add");
+            setSuccess("Success! You've added another accommodation to our site!");
+            // navigate("/add");
         } catch (error) {
             console.log("error", error);
-            //serverError(error.toString()); CHANGE FROM THIS ON THE OTHER FORMS
             setServerError(error.toString());
         } finally {
             setSubmitting(false);
@@ -60,6 +63,7 @@ export default function AddForm() {
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             {serverError && <FormError>{serverError}</FormError>}
+            {success && <FormSuccess content="Success! You've added another accommodation to our site!"></FormSuccess>}
             <fieldset className="form" disabled={submitting}>
                 <label className="form__label" htmlFor="name">Name of accommodation</label>
                 <input className="form__input" name="name" id="name" {...register('name')} />
@@ -96,6 +100,10 @@ export default function AddForm() {
                 <label className="form__label" htmlFor="description">Description (100-300 characthers)</label>
                 <textarea className="form__input form__message" name="description" {...register('description')}></textarea>
                 {errors.description && <FormError>{errors.description.message}</FormError>}
+
+                 
+                {/* <TypeDropdown {...register('accommodation_type')}/> */}
+
 
                 <label className="form__label" htmlFor="featured">Add to featured list</label>
                 <input className="form__checkbox" type="checkbox" id="featured" {...register('featured')} />

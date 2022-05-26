@@ -1,4 +1,4 @@
-// Errors
+// Errors and successes
 
 .form-error {
     color: red;
@@ -7,6 +7,15 @@
     margin-bottom: 30px;
 }
 
+.success-styling {
+    padding: 10px;
+    max-width: fit-content;
+    margin: 30px auto;
+    border: solid 2px $success-color;
+}
+
+// Forms
+
 .form {
     display: flex;
     flex-direction: column;
@@ -14,13 +23,6 @@
     max-width: 600px;
     margin: auto;
     border: none;
-
-    // &__error {
-    //     color: red;
-    //     align-self: flex-end;
-    //     margin-right: 60px;
-    //     display: none;
-    // }
 
     &__input {
         width: 80%;
@@ -69,10 +71,5 @@
     &__btn:hover {
         cursor: pointer;
         box-shadow: none;
-        // background: rgb(191,69,42);
-        // background: linear-gradient(0deg, rgba(191,69,42,1) 0%, rgba(242,135,41,1) 100%);
-        // background: $primary-color;
-        // background: rgb(242,135,41);
-        // background: linear-gradient(0deg, rgba(242,135,41,1) 0%, rgba(191,69,42,1) 100%);
     }
 }
