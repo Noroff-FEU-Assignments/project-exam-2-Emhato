@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from "react";
-import useAxios from "../hooks/useAxios";
+// import useAxios from "../hooks/useAxios";
+import useAxios from '../hooks/UseAxios';
 
 export default function EnquieryMessages() {
     const [items, setItems] = useState([]);

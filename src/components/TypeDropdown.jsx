@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import useAxios from "../hooks/useAxios";
+// import useAxios from "../hooks/useAxios";
+import useAxios from "../hooks/UseAxios";
 
 export default function TypeDropdown({register}) {
     const [type, setType] = useState([]);
