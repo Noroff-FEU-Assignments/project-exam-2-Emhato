@@ -40,9 +40,8 @@
         padding: 8px;
         border: none;
         color: #fff;
-        box-shadow: 3px 6px 9px rgba(0, 0, 0, 0.3);
+        box-shadow: $light-boxshadow;
         font-weight: 700;
-        transition: 0.5s;
         cursor: pointer;
     }
 

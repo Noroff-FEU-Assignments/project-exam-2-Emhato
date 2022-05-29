@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { BASE_URL } from "../constants/Api";
-import Heading from "./Heading";
+import { BASE_URL } from "../../constants/Api";
+import Heading from "../Heading";
 
 export default function Featured() {
     const [items, setItems] = useState([]);

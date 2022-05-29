@@ -1,17 +1,17 @@
+import Layout from "../layout/Layout";
 import Heading from "../Heading";
-import ContactForm from "../ContactForm";
-import Footer from "../Footer";
+import ContactForm from "../forms/ContactForm";
 import LogoBig from "../LogoBig";
 import Logo from "../Logo";
 
 export default function ContactPage() {
+  document.title = "Contact"
   return (
-    <>
+    <Layout>
         <Logo />
         <LogoBig />
         <Heading title="Contact" />
         <ContactForm />
-        <Footer />
-    </>
+    </Layout>
   )
 }

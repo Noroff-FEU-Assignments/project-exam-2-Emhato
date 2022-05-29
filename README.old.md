@@ -1,6 +1,6 @@
-<!-- LOGINDETAILS:
+# LOGINDETAILS:
 USERNAME: emma OR emma.tonnessen@gmail.com
-PASWORD: Pass1234 (NB! Uppercase "P") -->
+PASWORD: Pass1234 (NB! Uppercase "P")
 
 # Project Exam 2
 There are two options with this Project Exam. 

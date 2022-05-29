@@ -5,8 +5,8 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 import FormError from "./FormError";
-import { TOKEN_PATH } from "../constants/Api";
-import AuthContext from "../context/AuthContext";
+import { TOKEN_PATH } from "../../constants/Api";
+import AuthContext from "../../context/AuthContext";
 
 const url = TOKEN_PATH;
 

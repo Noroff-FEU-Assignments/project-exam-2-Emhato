@@ -1,3 +1,9 @@
+.accommodation-list {
+    &__description {
+        display: none;
+    }
+}
+
 @media only screen and (min-width: $mini-width) {
     .accommodation-list {
 

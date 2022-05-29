@@ -1,17 +1,17 @@
+import Layout from "../layout/Layout";
 import Heading from "../Heading";
 import Logo from "../Logo";
 import LogoBig from "../LogoBig";
-import Footer from "../Footer";
-import ContactMessages from "../ContactMessages";
+import ContactMessages from "../apiCalls/ContactMessages";
 
 export default function MessagesPage() {
+  document.title = "Messages"
   return (
-    <>
+    <Layout>
         <Logo />
         <LogoBig />
         <Heading title="Messages" />
         <ContactMessages />
-        <Footer />
-    </>
+    </Layout>
   )
 }

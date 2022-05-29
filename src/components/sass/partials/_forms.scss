@@ -3,6 +3,7 @@
 .form-error {
     color: red;
     width: 80%;
+    margin: auto;
     margin-top: -30px;
     margin-bottom: 30px;
 }
@@ -29,7 +30,7 @@
         height: 40px;
         border: none;
         margin-bottom: 40px;
-        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+        box-shadow: $light-boxshadow;
     }
 
     &__message {
@@ -61,7 +62,7 @@
         cursor: pointer;
         height: 40px;
         width: 40px;
-        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+        box-shadow: $light-boxshadow;
         box-sizing: content-box;
     }
 
@@ -73,8 +74,9 @@
     }
 
     // Buttons
-    
+
     &__btn {
+        // font-family: $font;
         margin-top: 10px;
         margin-bottom: 60px;
         border: none;
@@ -83,14 +85,10 @@
         background: linear-gradient(0deg, rgba(242,135,41,1) 0%, rgba(191,69,42,1) 100%);
         padding: 10px;
         font-size: 1.5rem;
-        box-shadow: 3px 6px 9px rgba(0, 0, 0, 0.3);
+        box-shadow: $light-boxshadow;
         font-weight: 700;
         transition: 0.5s;
         border-radius: 0 15px;
         cursor: pointer;
-    }
-
-    &__btn:hover {
-        box-shadow: none;
     }
 }

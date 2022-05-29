@@ -1,5 +1,5 @@
-import Featured from "../Featured";
-import Footer from "../Footer";
+import Layout from "../layout/Layout";
+import Featured from "../apiCalls/Featured";
 import SearchBar from "../SearchBar";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -8,6 +8,7 @@ import Logo from "../Logo";
 import LogoBig from "../LogoBig";
 
 export default function HomePage() {
+    document.title = "Holidaze"
 
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -35,15 +36,17 @@ export default function HomePage() {
     if(error) return <div>An error occured: {error}</div>
 
     return (
-        <div className="body">
-            <Logo />
-            <LogoBig />
-            <div className="background-container">
-                <h1 className="home-h1">Welcome to Holidaze! The place to start your Bergen holiday</h1>
-                <SearchBar placeholder="Search accommodations" data={data}/>                
-            </div>
-            <Featured />
-            <Footer />
-        </div>
+        <Layout>
+            <div className="body">
+                <Logo />
+                <LogoBig />
+                <div className="background-container">
+                    <h1 className="home-h1">Welcome to Holidaze! The place to book your Bergen holiday</h1>
+                    <SearchBar placeholder="Search accommodations" data={data}/>                
+                </div>
+                <Featured />
+            </div>        
+        </Layout>
+
   )
 }

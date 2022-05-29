@@ -1,14 +1,16 @@
+import Layout from "../layout/Layout";
 import Heading from "../Heading";
 import Logo from "../Logo";
 import LogoBig from "../LogoBig";
-import AllList from "../AllList";
-import Footer from "../Footer";
+import AllList from "../apiCalls/AllList";
 import SearchBar from "../SearchBar";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { BASE_URL } from "../../constants/Api";
 
 export default function AccommodationPage() {
+
+    document.title = "Accommodations"
 
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -35,13 +37,12 @@ export default function AccommodationPage() {
     if(error) return <div>An error occured: {error}</div>
 
     return (
-        <>
+        <Layout>
             <Logo />
             <LogoBig />
             <Heading title="Accommodations"/>
             <SearchBar placeholder="Search accommodations" data={data}/>
             <AllList />
-            <Footer />
-        </>
+        </Layout>
     )
 }

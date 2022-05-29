@@ -13,10 +13,11 @@
         width: 300px;
         border: none;
         border-radius: 30px;
+        // background-color: $secondary-color;
         background: rgb(242,135,41);
-        background: linear-gradient(0deg, rgba(242,135,41,0.9) 0%, rgba(191,69,42,0.9) 100%);
+        background: linear-gradient(0deg, rgba(242,135,41,1) 0%, rgba(191,69,42,1) 100%);
         padding-left: 10px;
-        box-shadow:  3px 6px 9px rgba(0, 0, 0, 0.6);
+        box-shadow:  $light-boxshadow;
         color: #fff;
         font-weight: 600;
         font-size: 1rem;

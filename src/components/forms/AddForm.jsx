@@ -4,7 +4,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import FormError from "./FormError";
 // import useAxios from "../hooks/useAxios";
-import useAxios from "../hooks/UseAxios";
+import useAxios from "../../hooks/UseAxios";
 import FormSuccess from "./FormSuccess";
 // import TypeDropdown from "./TypeDropdown";
 
@@ -59,40 +59,40 @@ export default function AddForm() {
             {serverError && <FormError>{serverError}</FormError>}
             {success && <FormSuccess content="Success! You've added another accommodation to our site!"></FormSuccess>}
             <fieldset className="form" disabled={submitting}>
-                <label className="form__label" htmlFor="name">Name of accommodation</label>
+                <label className="form__label" htmlFor="name">Name of accommodation*</label>
                 <input className="form__input" name="name" id="name" {...register('name')} />
                 {errors.name && <FormError>{errors.name.message}</FormError>}
 
-                <label className="form__label" htmlFor="price">Price per night</label>
+                <label className="form__label" htmlFor="price">Price per night*</label>
                 <input className="form__input" name="price" id="price" {...register('price')} />
                 {errors.price && <FormError>{errors.price.message}</FormError>}
 
-                <label className="form__label" htmlFor="max_number_of_guests">Maximum number of guests</label>
+                <label className="form__label" htmlFor="max_number_of_guests">Maximum number of guests*</label>
                 <input className="form__input" name="max_number_of_guests" id="max_number_of_guests" {...register('max_number_of_guests')} />
                 {errors.max_number_of_guests && <FormError>{errors.max_number_of_guests.message}</FormError>}
 
-                <label className="form__label" htmlFor="main_img">Main image (url)</label>
+                <label className="form__label" htmlFor="main_img">Main image (url)*</label>
                 <input className="form__input" name="main_img" id="main_img" {...register('main_img')} />
                 {errors.main_img && <FormError>{errors.main_img.message}</FormError>}
 
-                <label className="form__label" htmlFor="img_2">Image 2</label>
+                <label className="form__label" htmlFor="img_2">Image 2*</label>
                 <input className="form__input" name="img_2" id="img_2" {...register('img_2')} />
                 {errors.img_2 && <FormError>{errors.img_2.message}</FormError>}
 
-                <label className="form__label" htmlFor="img_3">Image 3</label>
+                <label className="form__label" htmlFor="img_3">Image 3*</label>
                 <input className="form__input" name="img_3" id="img_3" {...register('img_3')} />
                 {errors.img_3 && <FormError>{errors.img_3.message}</FormError>}
 
-                <label className="form__label" htmlFor="img_4">Image 4</label>
+                <label className="form__label" htmlFor="img_4">Image 4*</label>
                 <input className="form__input" name="img_4" id="img_4" {...register('img_4')} />
                 {errors.img_4 && <FormError>{errors.img_4.message}</FormError>}
 
-                <label className="form__label" htmlFor="short_description">Short description (100-250 characters)</label>
+                <label className="form__label" htmlFor="short_description">Short description (100-250 characters)*</label>
                 <textarea className="form__input form__message" name="short_description" {...register('short_description')} onChange={e => setShortCount(e.target.value.length)}></textarea>
                 <p className="form__count">{shortCount}/250</p>
                 {errors.short_description && <FormError>{errors.short_description.message}</FormError>}
 
-                <label className="form__label" htmlFor="description">Description (400-600 characters)</label>
+                <label className="form__label" htmlFor="description">Description (400-600 characters)*</label>
                 <textarea className="form__input form__message" name="description" {...register('description')} onChange={e => setDescriptionCount(e.target.value.length)}></textarea>
                 <p className="form__count">{descriptionCount}/600</p>
                 {errors.description && <FormError>{errors.description.message}</FormError>}

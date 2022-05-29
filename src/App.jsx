@@ -24,8 +24,8 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-        <Layout />
-        <div>
+        {/* <Layout /> */}
+        {/* <div> */}
           <Routes>
               <Route path="/" exact element={<HomePage />} />
               <Route path="/accommodations" element={<AccommodationPage />} />
@@ -36,7 +36,7 @@ function App() {
               <Route path="/enquieries" element={<EnquieriesPage />} />
               <Route path="/spesific/:id" element={<SpesificPage />} />
           </Routes>
-        </div>
+        {/* </div> */}
 
 
       </Router>

@@ -1,7 +1,6 @@
-import React from 'react'
-import { useState, useEffect } from "react";
-// import useAxios from "../hooks/useAxios";
-import useAxios from '../hooks/UseAxios';
+import React, { useState, useEffect } from "react";
+import useAxios from '../../hooks/UseAxios';
+import moment from "moment";
 
 export default function ContactMessages() {
     const [items, setItems] = useState([]);
@@ -33,15 +32,6 @@ export default function ContactMessages() {
     return (
         <div className="messages-container">
             {items.map((media) => {
-                // Formatting date
-                // Source: https://stackoverflow.com/questions/69977223/strapi-date-format-using-javascript
-                function dateFormat(value, local = "en-GB") {
-                    return new Date(value).toLocaleDateString(local);
-                }
-
-                const timestamp = media.attributes.publishedAt;
-
-                const formattedDate = dateFormat(timestamp)
                 return (
                     <div key={media.id}>
                         {/* <label className="handle-lable" htmlFor="not-handled">Not handled</label>
@@ -59,7 +49,7 @@ export default function ContactMessages() {
                             <p>Last name: {media.attributes.last_name}</p>
                             <p>Email: {media.attributes.email}</p>
                             <p>Message: {media.attributes.message}</p>
-                            <p>Message received: {formattedDate}</p>
+                            <p>Message received: {moment(media.attributes.publishedAt).format('Do MMMM YYYY, h:mm')}</p>
                         </div>
                     </div>
                 )

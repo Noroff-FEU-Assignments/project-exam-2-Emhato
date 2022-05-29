@@ -1,7 +1,8 @@
 import React from 'react'
 import { useState, useEffect } from "react";
 // import useAxios from "../hooks/useAxios";
-import useAxios from '../hooks/UseAxios';
+import useAxios from '../../hooks/UseAxios';
+import moment from 'moment';
 
 export default function EnquieryMessages() {
     const [items, setItems] = useState([]);
@@ -32,19 +33,6 @@ export default function EnquieryMessages() {
     return (
         <div className="messages-container">
             {items.map((media) => {
-                // Formatting dates
-                function dateFormat(value, local = "en-GB") {
-                    return new Date(value).toLocaleDateString(local);
-                }
-
-                const timestamp = media.attributes.publishedAt;
-                const checkin = media.attributes.start_date;
-                const checkout = media.attributes.end_date;
-
-                const formattedDate = dateFormat(timestamp);
-                const formattedCheckin = dateFormat(checkin);
-                const formattedCheckout = dateFormat(checkout)
-
                 return (
                     <div key={media.id}>
                         {/* <label htmlFor="not-handled">Not handled</label>
@@ -62,10 +50,10 @@ export default function EnquieryMessages() {
                             <p>First name: {media.attributes.first_name}</p>
                             <p>Last name: {media.attributes.last_name}</p>
                             <p>Email: {media.attributes.email}</p>
-                            <p>Checkin: {formattedCheckin}</p>
-                            <p>Checkout: {formattedCheckout}</p>
+                            <p>Checkin: {moment(media.attributes.start_date).format('Do MMMM YYYY')}</p>
+                            <p>Checkout: {moment(media.attributes.end_date).format('Do MMMM YYYY')}</p>
                             <p>Message: {media.attributes.message}</p>
-                            <p>Enquiery received: {formattedDate}</p>
+                            <p>Enquiery received: {moment(media.attributes.publishedAt).format('Do MMMM YYYY, h:mm')}</p>
                         </div>
                     </div>
                 )
