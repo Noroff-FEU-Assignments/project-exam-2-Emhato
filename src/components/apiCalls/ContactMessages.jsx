@@ -34,17 +34,7 @@ export default function ContactMessages() {
             {items.map((media) => {
                 return (
                     <div key={media.id}>
-                        {/* <label className="handle-lable" htmlFor="not-handled">Not handled</label>
-                        <input id="not-handled" className="radio-red" type="radio" name="handeling" value="not handled"></input>
-
-                        <label className="handle-lable" htmlFor="processing">Processing</label>
-                        <input id="processing" className="radio-yellow" type="radio" name="handeling" value="Processing"></input>
-
-                        <label className="handle-lable" htmlFor="handled">Handled</label>
-                        <input id="handled" className="radio-green" type="radio" name="handeling" value="handled"></input>     */}
                         <div className="messages" key={media.id}>
-                            {/* <label htmlFor="not-handled">Not handled</label>
-                            <input id="not-handled" className="radio-red" type="radio" name="handling" value="not handled"></input> */}
                             <p>First name: {media.attributes.first_name}</p>
                             <p>Last name: {media.attributes.last_name}</p>
                             <p>Email: {media.attributes.email}</p>

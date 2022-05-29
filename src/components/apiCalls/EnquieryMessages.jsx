@@ -35,17 +35,7 @@ export default function EnquieryMessages() {
             {items.map((media) => {
                 return (
                     <div key={media.id}>
-                        {/* <label htmlFor="not-handled">Not handled</label>
-                        <input id="not-handled" className="radio-red" type="radio" name="handling" value="not handled"></input>
-
-                        <label htmlFor="processing">Processing</label>
-                        <input id="processing" className="radio-yellow" type="radio" name="handling" value="Processing"></input>
-
-                        <label htmlFor="handled">Handled</label>
-                        <input id="handled" className="radio-green" type="radio" name="handling" value="handled"></input>     */}
                         <div className="messages" key={media.id}>
-                            {/* <label htmlFor="not-handled">Not handled</label>
-                            <input id="not-handled" className="radio-red" type="radio" name="handling" value="not handled"></input> */}
                             <p>Accommodation name: {media.attributes.accommodation_name}</p>
                             <p>First name: {media.attributes.first_name}</p>
                             <p>Last name: {media.attributes.last_name}</p>

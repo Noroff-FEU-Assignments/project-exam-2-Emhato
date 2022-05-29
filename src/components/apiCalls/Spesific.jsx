@@ -1,4 +1,3 @@
-// REMEMBER TO SET THE TITLE IN THE HEADER, ALLSO FOR ALL THE OTHER PAGES!
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -27,7 +26,6 @@ export default function Spesific() {
             try {
                 const response = await axios.get(url);
                 setItems(response.data.data);
-                // document.title = items.attributes.name
             } catch(error) {
                 console.log(error);
                 setError(error.toString());

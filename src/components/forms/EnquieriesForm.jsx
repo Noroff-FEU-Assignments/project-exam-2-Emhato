@@ -10,13 +10,14 @@ import Heading from "../Heading";
 import FormSuccess from "./FormSuccess";
 
 
+// Restricting the date source: https://stackoverflow.com/questions/58810127/how-do-i-validate-if-a-start-date-is-after-an-end-date-with-yup
 const schema = yup.object().shape({
     accommodation_name: yup.string().required(),
     first_name: yup.string().required("Please enter your first name").min(3, "Must be at least 3 characters"),
     last_name: yup.string().required("Please enter your last name").min(2, "Must be at least 2 characters"),
     email: yup.string().required("Please enter your e-mail").email("Please enter a valid e-mail address"),
-    start_date: yup.date().required("Please select a start date"),
-    end_date: yup.date().required("Please select a end date"),
+    start_date: yup.date().min(new Date(), "Cannot checkin earlier than today").default(() => new Date()).required("Please select a start date"),
+    end_date: yup.date().when("start_date", (start_date, schema) => start_date && schema.min(start_date)).required("Please select a end date"),
     message: yup.string().required("Please enter your message").min(10, "Please enter your message (must be at least 10 charachers)"),
 });
 
@@ -88,9 +89,6 @@ export default function EnquieriesForm() {
         setFormOpen(false)
     }
 
-    const todaysDate = new Date()
-    console.log(todaysDate)
-
     return (
         <>
         <div className="cta-container">
@@ -124,11 +122,11 @@ export default function EnquieriesForm() {
                 <input className="form__input" {...register("email")} id="email" />
                 {errors.email && <FormError>{errors.email.message}</FormError>}
                 
-                <label className="form__label" htmlFor="start_date">Start date*</label>
+                <label className="form__label" htmlFor="start_date">Checkin*</label>
                 <input className="form__input" type="date" {...register("start_date")} id="start_date" />
                 {errors.start_date && <FormError>{errors.start_date.message}</FormError>}
                 
-                <label className="form__label" htmlFor="end_date">End date*</label>
+                <label className="form__label" htmlFor="end_date">Checkout*</label>
                 <input className="form__input" type="date" {...register("end_date")} id="end_date" />
                 {errors.end_date && <FormError>{errors.end_date.message}</FormError>}
                 

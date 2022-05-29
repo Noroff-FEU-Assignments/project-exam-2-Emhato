@@ -3,16 +3,13 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import FormError from "./FormError";
-// import useAxios from "../hooks/useAxios";
 import useAxios from "../../hooks/UseAxios";
 import FormSuccess from "./FormSuccess";
-// import TypeDropdown from "./TypeDropdown";
 
 const schema = yup.object().shape({
     name: yup.string().required("Please add the name of accommodation").min(5, "Must be at least 5 characters"),
     price: yup.number().required("Please add a price (please exclude value type. Should be number only)"),
     max_number_of_guests: yup.number().required("Please add how may guests there are room for in this accommodation"),
-    // accommodation_type: yup.string().required("Please select accommodation type"),
     main_img: yup.string().required("Please add an url for the main image of the accommodation").url("Please enter a valid URL"),
     img_2: yup.string().required("Please add an url for an image").url("Please enter a valid URL"),
     img_3: yup.string().required("Please add an url for an image").url("Please enter a valid URL"),
@@ -96,8 +93,6 @@ export default function AddForm() {
                 <textarea className="form__input form__message" name="description" {...register('description')} onChange={e => setDescriptionCount(e.target.value.length)}></textarea>
                 <p className="form__count">{descriptionCount}/600</p>
                 {errors.description && <FormError>{errors.description.message}</FormError>}
-  
-                {/* <TypeDropdown {...register('accommodation_type')}/> */}
 
                 <div className="form__checkbox-container">
                     <label className="form__label" htmlFor="featured">Add to featured list</label>

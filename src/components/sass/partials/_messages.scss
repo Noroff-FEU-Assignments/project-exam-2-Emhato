@@ -26,24 +26,6 @@ input[name="handeling"] {
     align-items: center;
 }
 
-// .radio-red, .radio-yellow, .radio-green {
-//     accent-color: $primary-color;
-//     height: 20px;
-//     width: 20px;
-// }
-
-// .radio-red:checked ~ .messages {
-//     border: solid $primary-color;
-// }
-
-// .radio-yellow:checked ~ .messages {
-//     border: solid $secondary-color;
-// }
-
-// .radio-green:checked ~ .messages {
-//     border: solid $success-color;
-// }
-
 @media only screen and (min-width: $mini-width) {
     .messages {
         width: 60%;
