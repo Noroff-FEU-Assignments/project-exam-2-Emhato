@@ -2,7 +2,7 @@
 USERNAME: emma OR emma.tonnessen@gmail.com
 PASWORD: Pass1234 (NB! Uppercase "P")
 
-# Your project title
+# Holidaze
 
 ![Holidaze](/src/images/holidaze-home-desktop.JPG)
 
